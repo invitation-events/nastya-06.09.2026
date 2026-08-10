@@ -41,28 +41,27 @@
             background-image: url('IMG_9381.PNG');
         }
 
-        /* Фото 2.png – без обрезки, полная высота */
         .block-3 {
             background-image: url('2.png');
-            /* background-position: center; – по умолчанию, ничего не меняем */
         }
 
-        /* ---- Белый блок с анкетой ---- */
+        /* ---- Белый блок с анкетой (прижат к верху) ---- */
         .block-4 {
             background: #ffffff;
             display: flex;
-            flex-direction: column;        /* вертикальное размещение */
-            justify-content: center;
+            flex-direction: column;
+            justify-content: flex-start;    /* прижимаем к верху */
             align-items: center;
-            padding: 20px;
+            padding: 20px 20px 0 20px;      /* сверху 20px, снизу 0 */
         }
 
         .invite-text {
             font-size: 1.3rem;
             font-weight: 500;
-            color: #9bbf8b;               /* пастельный зелёный */
-            margin-bottom: 20px;
+            color: #9bbf8b;
+            margin-bottom: 8px;             /* минимальный отступ до формы */
             text-align: center;
+            padding-top: 10px;
         }
 
         .form-container {
@@ -112,7 +111,6 @@
             color: #333;
         }
 
-        /* Кастомные радиокнопки и чекбоксы (розовые) */
         .radio-group input[type="radio"],
         .checkbox-group input[type="checkbox"] {
             appearance: none;
@@ -224,6 +222,9 @@
         }
 
         @media (max-width: 600px) {
+            .block-4 {
+                padding: 10px 10px 0 10px;
+            }
             .form-container {
                 padding: 20px 16px;
                 font-size: 0.9rem;
@@ -246,6 +247,8 @@
             }
             .invite-text {
                 font-size: 1.1rem;
+                padding-top: 5px;
+                margin-bottom: 6px;
             }
         }
     </style>
