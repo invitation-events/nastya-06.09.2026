@@ -6,7 +6,6 @@
     <title>Настюше 1 год! Праздник для детей и взрослых</title>
     <meta name="description" content="6 сентября — день, когда нашей Настюше исполнился годик! Вместе играем, веселимся, обнимаемся и создаём тёплые воспоминания. Семейный уют, детский смех и радость без границ." />
 
-    <!-- Open Graph (без эмодзи) -->
     <meta property="og:title" content="Настюша празднует 1 годик" />
     <meta property="og:description" content="6 сентября — уютный семейный праздник с играми для детей и взрослых. Счастье быть вместе!" />
     <meta property="og:type" content="website" />
@@ -42,11 +41,13 @@
             background-image: url('IMG_9381.PNG');
         }
 
+        /* Обрезаем низ фото 2.png */
         .block-3 {
             background-image: url('2.png');
+            background-position: top center; /* низ обрезается */
         }
 
-        /* Белый блок с анкетой */
+        /* ---- Белый блок с анкетой ---- */
         .block-4 {
             background: #ffffff;
             display: flex;
@@ -55,66 +56,132 @@
             padding: 20px;
         }
 
-        .question-card {
+        .form-container {
             max-width: 700px;
             width: 100%;
-            padding: 40px 30px;
+            padding: 40px 35px;
             border-radius: 24px;
             background: #f9f9f9;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            text-align: left;
         }
 
-        .question-item {
+        .form-group {
             margin-bottom: 30px;
-            font-size: 1.2rem;
-            line-height: 1.6;
         }
 
-        .question-item:last-child {
-            margin-bottom: 0;
+        .form-group:last-of-type {
+            margin-bottom: 20px;
         }
 
-        .question-item .label {
+        .form-group label {
+            display: block;
             font-weight: 600;
             color: #333;
-            display: block;
-            margin-bottom: 6px;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
         }
 
-        .question-item .options {
-            color: #555;
-            padding-left: 16px;
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 25px;
+            align-items: center;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            font-weight: normal;
+            font-size: 1rem;
+            margin-bottom: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        .radio-group input[type="radio"],
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .sub-fields {
+            margin-top: 15px;
+            padding-left: 10px;
             border-left: 3px solid #f3a4b4;
-            margin-top: 4px;
+            padding-left: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        .question-item .options span {
-            display: inline-block;
-            margin-right: 16px;
-            background: #fff;
-            padding: 4px 14px;
-            border-radius: 20px;
-            border: 1px solid #e0e0e0;
+        .sub-fields .field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .sub-fields .field label {
+            font-weight: 500;
             font-size: 0.95rem;
-            margin-bottom: 6px;
+            color: #555;
         }
 
-        .question-item .options span:last-child {
-            margin-right: 0;
+        .sub-fields .field input {
+            padding: 8px 14px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            width: 150px;
+            background: #fff;
+        }
+
+        .sub-fields .field input:focus {
+            outline: none;
+            border-color: #f3a4b4;
+            box-shadow: 0 0 0 3px rgba(243, 164, 180, 0.2);
+        }
+
+        .btn-submit {
+            background: #f3a4b4;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(243, 164, 180, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: #e88a9d;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
         }
 
         @media (max-width: 600px) {
-            .question-card {
+            .form-container {
                 padding: 24px 18px;
             }
-            .question-item {
-                font-size: 1rem;
+            .radio-group,
+            .checkbox-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
             }
-            .question-item .options span {
-                display: block;
-                margin-right: 0;
-                text-align: center;
+            .sub-fields {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .sub-fields .field input {
+                width: 100%;
             }
         }
     </style>
@@ -124,39 +191,72 @@
     <div class="block block-2"></div>
     <div class="block block-3"></div>
 
-    <!-- Четвёртый блок – анкета на белом фоне -->
+    <!-- Четвёртый блок – анкета -->
     <div class="block block-4">
-        <div class="question-card">
-            <!-- Вопрос 1 -->
-            <div class="question-item">
-                <span class="label">Подтверждение участия</span>
-                <div class="options">
-                    <span>Буду</span>
-                    <span>Не смогу</span>
+        <div class="form-container">
+            <form id="guestForm">
+                <!-- Вопрос 1: присутствие -->
+                <div class="form-group">
+                    <label>Сможете ли присутствовать?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="attendance" value="yes" /> Да</label>
+                        <label><input type="radio" name="attendance" value="no" /> Нет</label>
+                        <label><input type="radio" name="attendance" value="maybe" /> Не знаю</label>
+                    </div>
+                    <!-- Дополнительные поля (показываются всегда для простоты) -->
+                    <div class="sub-fields">
+                        <div class="field">
+                            <label>Количество гостей с вами (взрослых)</label>
+                            <input type="number" name="adults" min="0" value="0" />
+                        </div>
+                        <div class="field">
+                            <label>Количество детей</label>
+                            <input type="number" name="children" min="0" value="0" />
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Вопрос 2 -->
-            <div class="question-item">
-                <span class="label">Количество гостей</span>
-                <div class="options">
-                    Взрослых: _____ &nbsp;&nbsp; Детей: _____
+                <!-- Вопрос 2: алкоголь -->
+                <div class="form-group">
+                    <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="alcohol" value="wine" /> Вино</label>
+                        <label><input type="checkbox" name="alcohol" value="whisky" /> Виски / Ром</label>
+                        <label><input type="checkbox" name="alcohol" value="beer" /> Пиво</label>
+                        <label><input type="checkbox" name="alcohol" value="champagne" /> Шампанское</label>
+                        <label><input type="checkbox" name="alcohol" value="none" /> Не пью алкоголь</label>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Вопрос 3 -->
-            <div class="question-item">
-                <span class="label">Предпочтения по алкоголю</span>
-                <div class="options">
-                    <span>Вино</span>
-                    <span>Виски / Ром</span>
-                    <span>Пиво</span>
-                    <span>Шампанское</span>
-                    <span>Не пью</span>
-                </div>
-            </div>
+                <!-- Кнопка отправки -->
+                <button type="button" class="btn-submit" onclick="submitForm()">Отправить</button>
+            </form>
         </div>
     </div>
+
+    <script>
+        function submitForm() {
+            // Собираем данные
+            const attendance = document.querySelector('input[name="attendance"]:checked');
+            const adults = document.querySelector('input[name="adults"]').value;
+            const children = document.querySelector('input[name="children"]').value;
+            const alcoholChecks = document.querySelectorAll('input[name="alcohol"]:checked');
+            const alcoholValues = Array.from(alcoholChecks).map(cb => cb.value);
+
+            if (!attendance) {
+                alert('Пожалуйста, выберите вариант присутствия.');
+                return;
+            }
+
+            let message = 'Ваш ответ:\n';
+            message += 'Присутствие: ' + attendance.value + '\n';
+            message += 'Взрослых: ' + adults + '\n';
+            message += 'Детей: ' + children + '\n';
+            message += 'Алкоголь: ' + (alcoholValues.length ? alcoholValues.join(', ') : 'Не выбрано');
+
+            alert(message);
+            // Здесь можно добавить отправку на сервер (AJAX) или ссылку mailto
+        }
+    </script>
 </body>
-</html>
 </html>
