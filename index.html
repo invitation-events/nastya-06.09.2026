@@ -41,20 +41,28 @@
             background-image: url('IMG_9381.PNG');
         }
 
-        /* Фото 2.png – обрезаем низ и уменьшаем высоту */
+        /* Фото 2.png – без обрезки, полная высота */
         .block-3 {
             background-image: url('2.png');
-            background-position: top center;
-            height: 85vh; /* было 100vh */
+            /* background-position: center; – по умолчанию, ничего не меняем */
         }
 
         /* ---- Белый блок с анкетой ---- */
         .block-4 {
             background: #ffffff;
             display: flex;
+            flex-direction: column;        /* вертикальное размещение */
             justify-content: center;
             align-items: center;
             padding: 20px;
+        }
+
+        .invite-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #9bbf8b;               /* пастельный зелёный */
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .form-container {
@@ -104,6 +112,7 @@
             color: #333;
         }
 
+        /* Кастомные радиокнопки и чекбоксы (розовые) */
         .radio-group input[type="radio"],
         .checkbox-group input[type="checkbox"] {
             appearance: none;
@@ -235,6 +244,9 @@
             .form-group > label {
                 font-size: 0.95rem;
             }
+            .invite-text {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -244,6 +256,7 @@
     <div class="block block-3"></div>
 
     <div class="block block-4">
+        <p class="invite-text">Пожалуйста, заполните анкету</p>
         <div class="form-container">
             <form id="guestForm">
                 <div class="form-group">
