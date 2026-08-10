@@ -45,23 +45,22 @@
             background-image: url('2.png');
         }
 
-        /* ---- Белый блок с анкетой (прижат к верху) ---- */
+        /* ---- Белый блок с анкетой (высота по содержимому) ---- */
         .block-4 {
             background: #ffffff;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;    /* прижимаем к верху */
             align-items: center;
-            padding: 20px 20px 0 20px;      /* сверху 20px, снизу 0 */
+            padding: 20px;
+            height: auto;          /* только по содержимому */
         }
 
         .invite-text {
             font-size: 1.3rem;
             font-weight: 500;
             color: #9bbf8b;
-            margin-bottom: 8px;             /* минимальный отступ до формы */
+            margin-bottom: 12px;
             text-align: center;
-            padding-top: 10px;
         }
 
         .form-container {
@@ -223,7 +222,7 @@
 
         @media (max-width: 600px) {
             .block-4 {
-                padding: 10px 10px 0 10px;
+                padding: 16px;
             }
             .form-container {
                 padding: 20px 16px;
@@ -247,8 +246,7 @@
             }
             .invite-text {
                 font-size: 1.1rem;
-                padding-top: 5px;
-                margin-bottom: 6px;
+                margin-bottom: 8px;
             }
         }
     </style>
