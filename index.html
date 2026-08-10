@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Два блока с прокруткой</title>
+    <style>
+        /* Убираем отступы */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Позволяем прокручивать страницу */
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        /* Каждый блок занимает 100% высоты окна */
+        .block {
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Первый блок – фото 1 */
+        .block-1 {
+            background-image: url('1.png');
+        }
+
+        /* Второй блок – фото 2 */
+        .block-2 {
+            background-image: url('IMG_9381.PNG');
+        }
+    </style>
+</head>
+<body>
+    <div class="block block-1"></div>
+    <div class="block block-2"></div>
+</body>
+</html>
