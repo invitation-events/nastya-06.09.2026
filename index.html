@@ -41,9 +41,11 @@
             background-image: url('IMG_9381.PNG');
         }
 
+        /* Фото 2.png – обрезаем низ и уменьшаем высоту */
         .block-3 {
             background-image: url('2.png');
             background-position: top center;
+            height: 85vh; /* было 100vh */
         }
 
         /* ---- Белый блок с анкетой ---- */
@@ -58,56 +60,56 @@
         .form-container {
             max-width: 700px;
             width: 100%;
-            padding: 40px 35px;
+            padding: 35px 30px;
             border-radius: 24px;
             background: #ffffff;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
             border: 1px solid #f0f0f0;
+            font-size: 0.95rem;
         }
 
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 26px;
         }
 
         .form-group:last-of-type {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-        .form-group label {
+        .form-group > label {
             display: block;
             font-weight: 600;
-            color: #333;
-            font-size: 1.15rem;
-            margin-bottom: 10px;
+            color: #9bbf8b;
+            font-size: 1rem;
+            margin-bottom: 8px;
         }
 
         .radio-group,
         .checkbox-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px 25px;
+            gap: 10px 20px;
             align-items: center;
         }
 
         .radio-group label,
         .checkbox-group label {
             font-weight: normal;
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-bottom: 0;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             cursor: pointer;
             color: #333;
         }
 
-        /* Кастомные стили для радиокнопок и чекбоксов (розовый) */
         .radio-group input[type="radio"],
         .checkbox-group input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border: 2px solid #d0d0d0;
             border-radius: 50%;
             outline: none;
@@ -142,14 +144,13 @@
             border-color: #f3a4b4;
         }
 
-        /* Поля для количества гостей (скрыты по умолчанию) */
         .sub-fields {
-            margin-top: 15px;
-            padding-left: 18px;
+            margin-top: 12px;
+            padding-left: 16px;
             border-left: 3px solid #f3a4b4;
             display: none;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 16px;
             animation: fadeIn 0.25s ease;
         }
 
@@ -158,29 +159,29 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-8px); }
+            from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .sub-fields .field {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
         .sub-fields .field label {
             font-weight: 500;
-            font-size: 0.95rem;
-            color: #555;
+            font-size: 0.9rem;
+            color: #9bbf8b;
             margin-bottom: 0;
         }
 
         .sub-fields .field input {
-            padding: 8px 14px;
-            border-radius: 12px;
+            padding: 6px 12px;
+            border-radius: 10px;
             border: 1px solid #ddd;
-            font-size: 1rem;
-            width: 150px;
+            font-size: 0.95rem;
+            width: 140px;
             background: #fafafa;
             transition: border 0.2s;
         }
@@ -188,21 +189,21 @@
         .sub-fields .field input:focus {
             outline: none;
             border-color: #f3a4b4;
-            box-shadow: 0 0 0 3px rgba(243, 164, 180, 0.15);
+            box-shadow: 0 0 0 3px rgba(243, 164, 180, 0.12);
         }
 
         .btn-submit {
             background: #f3a4b4;
             border: none;
-            padding: 14px 40px;
+            padding: 12px 36px;
             border-radius: 30px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #fff;
             cursor: pointer;
             transition: background 0.2s, transform 0.1s;
             width: 100%;
-            box-shadow: 0 4px 12px rgba(243, 164, 180, 0.25);
+            box-shadow: 0 4px 12px rgba(243, 164, 180, 0.2);
         }
 
         .btn-submit:hover {
@@ -215,20 +216,24 @@
 
         @media (max-width: 600px) {
             .form-container {
-                padding: 24px 18px;
+                padding: 20px 16px;
+                font-size: 0.9rem;
             }
             .radio-group,
             .checkbox-group {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 6px;
             }
             .sub-fields {
                 flex-direction: column;
-                gap: 12px;
+                gap: 10px;
             }
             .sub-fields .field input {
                 width: 100%;
+            }
+            .form-group > label {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -238,11 +243,9 @@
     <div class="block block-2"></div>
     <div class="block block-3"></div>
 
-    <!-- Четвёртый блок – анкета -->
     <div class="block block-4">
         <div class="form-container">
             <form id="guestForm">
-                <!-- Вопрос 1: присутствие -->
                 <div class="form-group">
                     <label>Сможете ли присутствовать?</label>
                     <div class="radio-group">
@@ -250,7 +253,6 @@
                         <label><input type="radio" name="attendance" value="no" /> Нет</label>
                         <label><input type="radio" name="attendance" value="maybe" /> Не знаю</label>
                     </div>
-                    <!-- Дополнительные поля (появляются при выборе "Да") -->
                     <div class="sub-fields" id="guestCountFields">
                         <div class="field">
                             <label>Количество гостей с вами (взрослых)</label>
@@ -263,7 +265,6 @@
                     </div>
                 </div>
 
-                <!-- Вопрос 2: алкоголь -->
                 <div class="form-group">
                     <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
                     <div class="checkbox-group">
@@ -275,14 +276,12 @@
                     </div>
                 </div>
 
-                <!-- Кнопка отправки -->
                 <button type="button" class="btn-submit" onclick="submitForm()">Отправить</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Показываем поля с количеством гостей только при выборе "Да"
         const radioButtons = document.querySelectorAll('input[name="attendance"]');
         const guestFields = document.getElementById('guestCountFields');
 
@@ -317,7 +316,6 @@
             message += 'Алкоголь: ' + (alcoholValues.length ? alcoholValues.join(', ') : 'Не выбрано');
 
             alert(message);
-            // Здесь можно добавить реальную отправку (AJAX, телеграм, email и т.п.)
         }
     </script>
 </body>
