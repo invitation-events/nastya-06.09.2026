@@ -6,8 +6,8 @@
     <title>Настюше 1 год! Праздник для детей и взрослых</title>
     <meta name="description" content="6 сентября — день, когда нашей Настюше исполнился годик! Вместе играем, веселимся, обнимаемся и создаём тёплые воспоминания. Семейный уют, детский смех и радость без границ." />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Настюша празднует 1 годик! 🎉" />
+    <!-- Open Graph (без эмодзи) -->
+    <meta property="og:title" content="Настюша празднует 1 годик" />
     <meta property="og:description" content="6 сентября — уютный семейный праздник с играми для детей и взрослых. Счастье быть вместе!" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="URL_ВАШЕЙ_СТРАНИЦЫ" />
@@ -23,6 +23,7 @@
         body {
             overflow-y: scroll;
             height: 100%;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
         .block {
@@ -44,11 +45,118 @@
         .block-3 {
             background-image: url('2.png');
         }
+
+        /* Белый блок с анкетой */
+        .block-4 {
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .question-card {
+            max-width: 700px;
+            width: 100%;
+            padding: 40px 30px;
+            border-radius: 24px;
+            background: #f9f9f9;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+
+        .question-item {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .question-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .question-item .label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .question-item .options {
+            color: #555;
+            padding-left: 16px;
+            border-left: 3px solid #f3a4b4;
+            margin-top: 4px;
+        }
+
+        .question-item .options span {
+            display: inline-block;
+            margin-right: 16px;
+            background: #fff;
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid #e0e0e0;
+            font-size: 0.95rem;
+            margin-bottom: 6px;
+        }
+
+        .question-item .options span:last-child {
+            margin-right: 0;
+        }
+
+        @media (max-width: 600px) {
+            .question-card {
+                padding: 24px 18px;
+            }
+            .question-item {
+                font-size: 1rem;
+            }
+            .question-item .options span {
+                display: block;
+                margin-right: 0;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="block block-1"></div>
     <div class="block block-2"></div>
     <div class="block block-3"></div>
+
+    <!-- Четвёртый блок – анкета на белом фоне -->
+    <div class="block block-4">
+        <div class="question-card">
+            <!-- Вопрос 1 -->
+            <div class="question-item">
+                <span class="label">Подтверждение участия</span>
+                <div class="options">
+                    <span>Буду</span>
+                    <span>Не смогу</span>
+                </div>
+            </div>
+
+            <!-- Вопрос 2 -->
+            <div class="question-item">
+                <span class="label">Количество гостей</span>
+                <div class="options">
+                    Взрослых: _____ &nbsp;&nbsp; Детей: _____
+                </div>
+            </div>
+
+            <!-- Вопрос 3 -->
+            <div class="question-item">
+                <span class="label">Предпочтения по алкоголю</span>
+                <div class="options">
+                    <span>Вино</span>
+                    <span>Виски / Ром</span>
+                    <span>Пиво</span>
+                    <span>Шампанское</span>
+                    <span>Не пью</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+</html>
 </html>
