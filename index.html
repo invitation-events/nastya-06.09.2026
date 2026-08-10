@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Настя 1 год </title>
+
+    <!-- Стандартные мета-теги -->
+    <title>С днём рождения, Настюша! 1 годик</title>
+    <meta name="description" content="Настюше исполнился 1 годик! Поздравляем с 6 сентября!" />
+
+    <!-- Open Graph (для соцсетей и мессенджеров) -->
+    <meta property="og:title" content="С днём рождения, Настюша! 1 годик" />
+    <meta property="og:description" content="Настюше исполнился 1 годик! Поздравляем с 6 сентября!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_ВАШЕЙ_СТРАНИЦЫ" />
+    <meta property="og:image" content="URL_ИЗОБРАЖЕНИЯ" />
+    <!-- Рекомендуемый размер og:image – 1200×630 пикселей -->
+
+    <!-- Для Twitter (опционально) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="С днём рождения, Настюша! 1 годик" />
+    <meta name="twitter:description" content="Настюше исполнился 1 годик! Поздравляем с 6 сентября!" />
+    <meta name="twitter:image" content="URL_ИЗОБРАЖЕНИЯ" />
+
     <style>
-        /* Убираем отступы */
         * {
             margin: 0;
             padding: 0;
@@ -13,12 +30,10 @@
         }
 
         body {
-            /* Позволяем прокручивать страницу */
             overflow-y: scroll;
             height: 100%;
         }
 
-        /* Каждый блок занимает 100% высоты окна */
         .block {
             height: 100vh;
             width: 100%;
@@ -27,12 +42,10 @@
             background-repeat: no-repeat;
         }
 
-        /* Первый блок – фото 1 */
         .block-1 {
             background-image: url('1.png');
         }
 
-        /* Второй блок – фото 2 */
         .block-2 {
             background-image: url('IMG_9381.PNG');
         }
