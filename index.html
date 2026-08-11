@@ -17,7 +17,7 @@
             font-family: sans-serif;
         }
 
-        /* Первый блок – фото как картинка (занимает свою натуральную высоту) */
+        /* Первый блок – фото как картинка */
         .block-img {
             width: 100%;
             display: block;
@@ -28,69 +28,70 @@
             display: block;
         }
 
-        /* Второй блок – фоновое фото на весь экран */
+        /* Общие стили для фоновых блоков */
         .block-bg {
             width: 100%;
             height: 100vh;
             background-size: cover;
-            background-position: center;
             background-repeat: no-repeat;
         }
+
+        /* Второй блок – обрезаем снизу (смещаем вверх) */
         .block-bg-2 {
             background-image: url('image_2026-08-11_11-41-430.png');
+            background-position: center 70%; /* чуть выше центра → низ обрезается */
         }
 
-        /* Третий блок – фоновое фото + кружки внизу */
+        /* Третий блок – обрезаем сверху (смещаем вниз) */
         .block-bg-3 {
             background-image: url('image_2026-08-11_12-04-560.png');
+            background-position: center 30%; /* чуть ниже центра → верх обрезается */
             position: relative;
             display: flex;
-            align-items: flex-end;      /* прижимаем кружки к низу */
+            align-items: flex-end;
             justify-content: center;
-            padding-bottom: 40px;       /* отступ от края экрана */
+            padding-bottom: 25px; /* уменьшили отступ, кружки поднялись выше */
         }
 
         /* Контейнер для кружков */
         .circles {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        /* Каждый кружок – без обводки, просто заливка */
+        /* Кружки без обводок, уменьшенные */
         .circle {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            border: none;              /* убираем обводку */
-            box-shadow: none;          /* убираем тени */
-            background: #ffffff;       /* базовый белый */
+            border: none;
+            box-shadow: none;
             transition: transform 0.2s ease;
         }
 
-        /* Оттенки бежевого и белого – без обводок */
+        /* Оттенки белого и бежевого */
         .circle-1 { background: #ffffff; }
         .circle-2 { background: #fdf6ee; }
         .circle-3 { background: #f5ede0; }
         .circle-4 { background: #f0e6d3; }
         .circle-5 { background: #e8dcc8; }
 
-        /* Лёгкий hover (опционально) */
         .circle:hover {
             transform: scale(1.05);
         }
 
         @media (max-width: 600px) {
             .circle {
-                width: 40px;
-                height: 40px;
+                width: 32px;
+                height: 32px;
             }
             .circles {
-                gap: 14px;
+                gap: 12px;
             }
             .block-bg-3 {
-                padding-bottom: 30px;
+                padding-bottom: 20px;
             }
         }
     </style>
@@ -102,10 +103,10 @@
         <img src="image_2026-08-11_11-27-148.png" alt="Фото 1" />
     </div>
 
-    <!-- Второе фото (фон на весь экран) -->
+    <!-- Второе фото (фон, обрезан снизу) -->
     <div class="block-bg block-bg-2"></div>
 
-    <!-- Третье фото (фон на весь экран) + 5 кружков внизу -->
+    <!-- Третье фото (фон, обрезан сверху) + кружки -->
     <div class="block-bg block-bg-3">
         <div class="circles">
             <span class="circle circle-1"></span>
