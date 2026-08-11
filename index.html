@@ -32,25 +32,26 @@
         .block-bg {
             width: 100%;
             background-size: cover;
-            background-position: center;
             background-repeat: no-repeat;
         }
 
-        /* Второй блок – обрезаем снизу за счёт уменьшения высоты */
+        /* Второй блок – обрезаем снизу */
         .block-bg-2 {
             background-image: url('image_2026-08-11_11-41-430.png');
-            height: 85vh;                /* меньше 100vh → низ обрезается */
+            background-position: center top;
+            height: 85vh;
         }
 
-        /* Третий блок – обрезаем сверху (тоже уменьшаем высоту, но фон по центру) */
+        /* Третий блок – обрезаем сверху */
         .block-bg-3 {
             background-image: url('image_2026-08-11_12-04-560.png');
-            height: 85vh;                /* верх и низ обрезаются равномерно */
+            background-position: center bottom;
+            height: 100vh;
             position: relative;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding-bottom: 20px;         /* кружки выше */
+            padding-bottom: 40px;
         }
 
         /* Кружки */
@@ -62,14 +63,15 @@
         }
 
         .circle {
-            width: 36px;                 /* чуть меньше */
+            width: 36px;
             height: 36px;
             border-radius: 50%;
-            border: none;
+            border: 2px solid #9bbf8b;   /* пастельно-зелёная обводка */
             box-shadow: none;
             transition: transform 0.2s ease;
         }
 
+        /* Заливки кружков */
         .circle-1 { background: #ffffff; }
         .circle-2 { background: #fdf6ee; }
         .circle-3 { background: #f5ede0; }
@@ -84,16 +86,16 @@
             .circle {
                 width: 30px;
                 height: 30px;
+                border-width: 2px;         /* можно оставить или уменьшить */
             }
             .circles {
                 gap: 10px;
             }
-            .block-bg-2,
-            .block-bg-3 {
-                height: 80vh;            /* на мобилках ещё меньше */
+            .block-bg-2 {
+                height: 80vh;
             }
             .block-bg-3 {
-                padding-bottom: 15px;
+                padding-bottom: 30px;
             }
         }
     </style>
@@ -105,10 +107,10 @@
         <img src="image_2026-08-11_11-27-148.png" alt="Фото 1" />
     </div>
 
-    <!-- Второй блок – обрезан снизу (высота 85vh) -->
+    <!-- Второй блок – обрезан снизу -->
     <div class="block-bg block-bg-2"></div>
 
-    <!-- Третий блок – обрезан сверху и снизу (высота 85vh) + кружки -->
+    <!-- Третий блок – обрезан сверху + кружки -->
     <div class="block-bg block-bg-3">
         <div class="circles">
             <span class="circle circle-1"></span>
