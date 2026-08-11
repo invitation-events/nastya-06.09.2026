@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Приглашение</title>
-  <!-- Шрифты (из примера) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -33,7 +32,7 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* ===== БЛОКИ С КАРТИНКАМИ ===== */
+    /* Блоки с картинками */
     .block-img {
       width: 100%;
       display: block;
@@ -44,14 +43,14 @@
       display: block;
     }
 
-    /* ===== ФОНОВЫЕ БЛОКИ ===== */
+    /* Фоновые блоки */
     .block-bg {
       width: 100%;
       background-size: cover;
       background-repeat: no-repeat;
     }
 
-    /* Третий блок – фото с кружками (обрезан сверху) */
+    /* Третий блок – фото с кружками */
     .block-bg-3 {
       background-image: url('image_2026-08-11_12-04-560.png');
       background-position: center bottom;
@@ -83,74 +82,57 @@
     .circle-5 { background: #e8dcc8; }
     .circle:hover { transform: scale(1.05); }
 
-    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (как в примере) ===== */
+    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (чёрный шрифт, смещена влево) ===== */
     .block-bg-4 {
       background-image: url('image_2026-08-11_12-37-089.png');
       background-size: cover;
       background-position: center;
       width: 100%;
-      min-height: 100vh;          /* занимает экран, чтобы фон был виден */
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;   /* прижимаем к левому краю */
       align-items: center;
       padding: 30px 20px;
     }
 
-    /* ===== СТИЛИ АНКЕТЫ (скопированы из эталона) ===== */
     .rsvp {
       width: 100%;
       max-width: 580px;
-      margin: 0 auto;
-      background: transparent;    /* прозрачный фон, чтобы видно было фото */
-      color: #fff;
-      text-align: center;
-      padding: 0;
+      margin: 0;
+      background: transparent;
+      color: #1e1e1e;               /* чёрный шрифт */
+      text-align: left;
+      padding: 20px 10px 20px 30px; /* увеличен отступ слева */
     }
-    .rsvp .container {
-      max-width: 580px;
-      margin: 0 auto;
-    }
-    .rsvp h2 {
-      font-size: 44px;
-      margin-bottom: 10px;
-      font-weight: 400;
-      font-family: 'Cormorant Garamond', serif;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .rsvp .note {
-      font-size: 16px;
-      margin-bottom: 32px;
-      opacity: 0.9;
-      margin-top: 0;
-      color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
+
     .rsvp form {
       text-align: left;
     }
+
     .rsvp label {
       display: block;
       font-size: 16px;
       margin: 22px 0 8px;
       font-weight: 500;
-      color: #fff;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      color: #1e1e1e;               /* чёрный */
+      text-shadow: none;            /* убрали тень */
     }
+
     .rsvp input[type="text"] {
       width: 100%;
       border: none;
-      border-bottom: 1px solid rgba(255,255,255,0.7);
+      border-bottom: 1px solid #1e1e1e; /* чёрная линия */
       background: transparent;
       padding: 10px 0;
-      color: #fff;
+      color: #1e1e1e;
       outline: none;
       font-size: 16px;
     }
     .rsvp input[type="text"]::placeholder {
-      color: rgba(255,255,255,0.6);
+      color: #888;
     }
-    /* Кастомные радио-кнопки */
+
+    /* Кастомные радио-кнопки – чёрная обводка, розовое выделение */
     .rsvp .custom-radio {
       display: flex;
       align-items: center;
@@ -158,7 +140,7 @@
       margin: 10px 0;
       cursor: pointer;
       font-weight: normal;
-      color: #fff;
+      color: #1e1e1e;
       position: relative;
     }
     .rsvp .custom-radio input {
@@ -171,15 +153,16 @@
       display: inline-block;
       width: 22px;
       height: 22px;
-      border: 2px solid rgba(255,255,255,0.7);
+      border: 2px solid #1e1e1e;     /* чёрная обводка */
       border-radius: 50%;
       position: relative;
       transition: all 0.2s;
       flex-shrink: 0;
+      background: transparent;
     }
     .rsvp .custom-radio input:checked ~ .radio-mark {
-      border-color: #f5e6d3;
-      background: rgba(255,255,255,0.2);
+      border-color: #f3a4b4;         /* розовый при выборе */
+      background: rgba(243, 164, 180, 0.2);
     }
     .rsvp .custom-radio input:checked ~ .radio-mark::after {
       content: "";
@@ -190,9 +173,10 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #f5e6d3;
+      background: #f3a4b4;           /* розовая точка */
     }
-    /* Чекбоксы */
+
+    /* Чекбоксы – чёрная обводка, розовый фон при выборе */
     .rsvp .custom-checkbox {
       display: flex;
       align-items: center;
@@ -200,7 +184,7 @@
       margin: 6px 0;
       cursor: pointer;
       font-weight: normal;
-      color: #fff;
+      color: #1e1e1e;
     }
     .rsvp .custom-checkbox input {
       position: absolute;
@@ -212,15 +196,16 @@
       display: inline-block;
       width: 22px;
       height: 22px;
-      border: 2px solid rgba(255,255,255,0.7);
+      border: 2px solid #1e1e1e;     /* чёрная обводка */
       border-radius: 4px;
       position: relative;
       transition: all 0.2s;
       flex-shrink: 0;
+      background: transparent;
     }
     .rsvp .custom-checkbox input:checked ~ .checkmark {
-      background: #fff;
-      border-color: #fff;
+      background: #f3a4b4;           /* розовый фон */
+      border-color: #f3a4b4;
     }
     .rsvp .custom-checkbox input:checked ~ .checkmark::after {
       content: "✓";
@@ -228,10 +213,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color: #b7a99a;
+      color: #fff;
       font-size: 16px;
       font-weight: bold;
     }
+
     .rsvp .checkbox-group {
       display: flex;
       flex-direction: column;
@@ -246,33 +232,33 @@
       width: 100%;
       margin-top: 40px;
       padding: 14px;
-      border: 1px solid #fff;
+      border: 1px solid #1e1e1e;     /* чёрная обводка */
       border-radius: 50px;
       background: transparent;
-      color: #fff;
+      color: #1e1e1e;
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
       transition: 0.2s;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      text-shadow: none;
     }
     .rsvp button:hover {
-      background: #fff;
-      color: #b7a99a;
+      background: #1e1e1e;
+      color: #fff;
     }
 
-    /* Сообщение под кнопкой */
+    /* Сообщение под кнопкой – чёрный текст на светлом фоне */
     .form-message {
       margin-top: 20px;
       padding: 14px 18px;
       background: rgba(255, 255, 255, 0.85);
-      color: #3d2c1b;
+      color: #1e1e1e;
       border-radius: 12px;
       font-size: 17px;
       font-weight: 400;
       text-align: center;
       display: none;
-      border: 1px solid #d4c5b2;
+      border: 1px solid #ccc;
       width: 100%;
       max-width: 340px;
       box-sizing: border-box;
@@ -286,13 +272,12 @@
       border-color: #dbb0a8;
     }
 
-    /* ===== АДАПТИВНОСТЬ ===== */
+    /* Адаптив */
     @media (max-width: 680px) {
       .block-bg-3 { padding-bottom: 70px; }
       .circle { width: 60px; height: 60px; }
       .circles { gap: 18px; }
-      .rsvp h2 { font-size: 32px; }
-      .rsvp .container { padding: 0 10px; }
+      .rsvp { padding-left: 20px; padding-right: 10px; }
       .rsvp label { font-size: 15px; }
       .rsvp input[type="text"] { font-size: 15px; }
       .rsvp button { font-size: 15px; padding: 12px; }
@@ -303,19 +288,18 @@
       .block-bg-3 { padding-bottom: 60px; }
       .circle { width: 50px; height: 50px; }
       .circles { gap: 14px; }
-      .rsvp h2 { font-size: 26px; }
-      .rsvp .note { font-size: 14px; }
+      .rsvp { padding-left: 15px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- БЛОК 1: ФОТО (обычная картинка) -->
+  <!-- БЛОК 1: ФОТО -->
   <div class="block-img">
     <img src="image_2026-08-11_11-27-148.png" alt="Фото 1" />
   </div>
 
-  <!-- БЛОК 2: ФОТО (обычная картинка) -->
+  <!-- БЛОК 2: ФОТО -->
   <div class="block-img">
     <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
   </div>
@@ -331,47 +315,41 @@
     </div>
   </div>
 
-  <!-- БЛОК 4: ФОНОВОЕ ФОТО + АНКЕТА (стиль из эталона) -->
+  <!-- БЛОК 4: ФОНОВОЕ ФОТО + АНКЕТА (без заголовка, чёрный шрифт, смещена влево) -->
   <div class="block-bg block-bg-4">
     <section class="rsvp">
-      <div class="container">
-        <h2>АНКЕТА ГОСТЯ</h2>
-        <p class="note">пожалуйста, подтвердите свое присутствие</p>
+      <form id="rsvpForm">
+        <label>Ваше имя и фамилия</label>
+        <input type="text" name="name" id="guestName" placeholder="Имя и фамилия" required>
 
-        <form id="rsvpForm">
-          <label>Ваше имя и фамилия</label>
-          <input type="text" name="name" id="guestName" placeholder="Имя и фамилия" required>
+        <label>Сможете ли Вы присутствовать?</label>
+        <div class="radio-group">
+          <label class="custom-radio">
+            <input type="radio" name="attend" value="Да, смогу" required>
+            <span class="radio-mark"></span> Да, смогу
+          </label>
+          <label class="custom-radio">
+            <input type="radio" name="attend" value="Нет, не смогу">
+            <span class="radio-mark"></span> Нет, не смогу
+          </label>
+        </div>
 
-          <label>Сможете ли Вы присутствовать?</label>
-          <div class="radio-group">
-            <label class="custom-radio">
-              <input type="radio" name="attend" value="Да, смогу" required>
-              <span class="radio-mark"></span> Да, смогу
-            </label>
-            <label class="custom-radio">
-              <input type="radio" name="attend" value="Нет, не смогу">
-              <span class="radio-mark"></span> Нет, не смогу
-            </label>
-          </div>
+        <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
+        <div class="checkbox-group">
+          <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Вино"><span class="checkmark"></span> Вино</label>
+          <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Виски / Ром"><span class="checkmark"></span> Виски / Ром</label>
+          <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Пиво"><span class="checkmark"></span> Пиво</label>
+          <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Шампанское"><span class="checkmark"></span> Шампанское</label>
+          <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Не пью"><span class="checkmark"></span> Не пью алкоголь</label>
+        </div>
 
-          <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
-          <div class="checkbox-group">
-            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Вино"><span class="checkmark"></span> Вино</label>
-            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Виски / Ром"><span class="checkmark"></span> Виски / Ром</label>
-            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Пиво"><span class="checkmark"></span> Пиво</label>
-            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Шампанское"><span class="checkmark"></span> Шампанское</label>
-            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Не пью"><span class="checkmark"></span> Не пью алкоголь</label>
-          </div>
-
-          <button type="submit" id="submitBtn">Отправить</button>
-          <div id="formMessage" class="form-message"></div>
-        </form>
-      </div>
+        <button type="submit" id="submitBtn">Отправить</button>
+        <div id="formMessage" class="form-message"></div>
+      </form>
     </section>
   </div>
 
   <script>
-    // ===== ОТПРАВКА ФОРМЫ (с alert вместо отправки на сервер) =====
     const rsvpForm = document.getElementById('rsvpForm');
     const formMessage = document.getElementById('formMessage');
 
@@ -403,15 +381,12 @@
       const alcoholValues = Array.from(alcoholCheckboxes).map(cb => cb.value);
       const alcoholString = alcoholValues.length ? alcoholValues.join(', ') : 'Не выбрано';
 
-      // Вместо отправки на сервер — показываем alert
       let message = 'Ваш ответ:\n';
       message += 'Имя: ' + name + '\n';
       message += 'Присутствие: ' + attendance + '\n';
       message += 'Алкоголь: ' + alcoholString;
-
       alert(message);
 
-      // Показываем сообщение об успехе
       formMessage.className = 'form-message show';
       formMessage.textContent = 'Спасибо! Ваш ответ получен.';
       rsvpForm.reset();
