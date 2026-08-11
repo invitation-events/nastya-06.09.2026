@@ -44,7 +44,7 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding-bottom: 90px;          /* опущены ниже */
+            padding-bottom: 90px;
         }
 
         .circles {
@@ -73,26 +73,27 @@
             transform: scale(1.05);
         }
 
-        /* ---- Четвёртый блок: фон + анкета (без карточки, без полупрозрачности) ---- */
+        /* ---- Четвёртый блок: фон + анкета (высота по содержимому) ---- */
         .block-bg-4 {
             background-image: url('image_2026-08-11_12-37-089.png');
-            background-position: center;
             background-size: cover;
-            min-height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            padding: 40px 20px;              /* отступы внутри блока */
+            height: auto;                    /* по содержимому, не на весь экран */
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px 20px;
+            justify-content: center;         /* центрируем анкету по горизонтали */
         }
 
         .survey-overlay {
             width: 100%;
             max-width: 700px;
-            padding: 12px 8px;            /* сжато ближе к центру */
+            padding: 0;                     /* внутренние отступы уже есть у полей */
         }
 
         .survey-overlay .form-group {
-            margin-bottom: 16px;            /* уменьшено */
+            margin-bottom: 16px;
         }
         .survey-overlay .form-group:last-of-type {
             margin-bottom: 10px;
@@ -104,7 +105,7 @@
             color: #9bbf8b;
             font-size: 1rem;
             margin-bottom: 6px;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* тень для читаемости, без размытия */
         }
 
         /* Поля ввода – сплошной белый фон */
@@ -115,7 +116,7 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             font-size: 0.95rem;
-            background: #ffffff;             /* сплошной белый */
+            background: #ffffff;
             color: #333;
             transition: border 0.2s;
         }
@@ -143,7 +144,7 @@
             gap: 6px;
             cursor: pointer;
             color: #fff;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* тень для читаемости */
         }
 
         /* Кастомные радио и чекбоксы – белые с розовым выделением */
@@ -159,7 +160,7 @@
             cursor: pointer;
             transition: all 0.15s;
             flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.2); /* полупрозрачный фон, чтобы было видно, но не мешало */
+            background: rgba(255, 255, 255, 0.2); /* полупрозрачный фон, но без blur */
             position: relative;
         }
         .radio-group input[type="radio"]:checked {
@@ -218,20 +219,20 @@
             border-radius: 8px;
             border: 1px solid #ddd;
             font-size: 0.9rem;
-            background: #ffffff;            /* сплошной белый */
+            background: #ffffff;
         }
         .sub-fields .field input:focus {
             outline: none;
             border-color: #f3a4b4;
         }
 
-        /* Кнопка уменьшена в два раза */
+        /* Кнопка уменьшена */
         .btn-submit {
-            background: #f3a4b4;            /* сплошной розовый */
+            background: #f3a4b4;
             border: none;
-            padding: 8px 18px;              /* было 12px 36px */
+            padding: 8px 18px;
             border-radius: 20px;
-            font-size: 0.9rem;              /* было 1.1rem */
+            font-size: 0.9rem;
             font-weight: 600;
             color: #fff;
             cursor: pointer;
@@ -250,7 +251,7 @@
 
         @media (max-width: 600px) {
             .block-bg-3 {
-                padding-bottom: 70px;         /* адаптивно */
+                padding-bottom: 70px;
             }
             .circle {
                 width: 50px;
@@ -259,8 +260,11 @@
             .circles {
                 gap: 16px;
             }
-            .survey-overlay {
-                padding: 8px 4px;
+            .block-bg-4 {
+                padding: 20px 12px;
+            }
+            .survey-overlay .form-group {
+                margin-bottom: 12px;
             }
             .radio-group,
             .checkbox-group {
@@ -269,9 +273,6 @@
             .radio-group label,
             .checkbox-group label {
                 font-size: 0.85rem;
-            }
-            .survey-overlay .form-group {
-                margin-bottom: 12px;
             }
             .survey-overlay .form-group > label {
                 font-size: 0.9rem;
@@ -294,9 +295,6 @@
                 font-size: 0.85rem;
                 padding: 5px 8px;
             }
-            .block-bg-4 {
-                padding: 20px 10px;
-            }
         }
     </style>
 </head>
@@ -312,7 +310,7 @@
         <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
     </div>
 
-    <!-- Блок 3: фон + кружки (опущены ниже) -->
+    <!-- Блок 3: фон + кружки -->
     <div class="block-bg block-bg-3">
         <div class="circles">
             <span class="circle circle-1"></span>
@@ -323,7 +321,7 @@
         </div>
     </div>
 
-    <!-- Блок 4: фон + анкета (без полупрозрачности, кнопка меньше) -->
+    <!-- Блок 4: фон + анкета (высота по содержимому, без размытия) -->
     <div class="block-bg block-bg-4">
         <div class="survey-overlay">
             <form id="guestForm">
