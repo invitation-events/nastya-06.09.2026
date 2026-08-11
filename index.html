@@ -46,10 +46,10 @@
     /* Фоновые блоки */
     .block-bg {
       width: 100%;
-      background-size: contain;      /* теперь фото вмещается целиком */
+      height: 100vh;
+      background-size: cover;      /* фон на весь блок */
       background-repeat: no-repeat;
       background-position: center;
-      height: 100vh;
     }
 
     /* Третий блок – фоновое фото без кружков */
@@ -57,10 +57,10 @@
       background-image: url('image_2026-08-11_12-04-560.png');
     }
 
-    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (цвет #878778) ===== */
+    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА ===== */
     .block-bg-4 {
       background-image: url('image_2026-08-11_12-37-089.png');
-      background-size: contain;      /* фото целиком */
+      background-size: cover;      /* фон на весь блок */
       background-position: center;
       width: 100%;
       min-height: 100vh;
@@ -212,7 +212,7 @@
       padding: 14px;
       border: none;
       border-radius: 50px;
-      background: #878778;            /* основной цвет */
+      background: #878778;
       color: #fff;
       font-size: 16px;
       font-weight: 500;
@@ -221,7 +221,7 @@
       text-shadow: none;
     }
     .rsvp button:hover {
-      background: #6f6f66;            /* темнее при наведении */
+      background: #6f6f66;
     }
     .rsvp button:active {
       transform: scale(0.97);
@@ -286,10 +286,10 @@
     <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
   </div>
 
-  <!-- БЛОК 3: ФОНОВОЕ ФОТО (без кружков, contain) -->
+  <!-- БЛОК 3: ФОНОВОЕ ФОТО (cover, без кружков) -->
   <div class="block-bg block-bg-3"></div>
 
-  <!-- БЛОК 4: ФОНОВОЕ ФОТО (contain) + АНКЕТА (цвет #878778) -->
+  <!-- БЛОК 4: ФОНОВОЕ ФОТО (cover) + АНКЕТА (цвет #878778) -->
   <div class="block-bg block-bg-4">
     <section class="rsvp">
       <form id="rsvpForm">
