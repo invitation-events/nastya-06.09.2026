@@ -32,7 +32,7 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Блоки с картинками */
+    /* Блоки с картинками (обычные img) */
     .block-img {
       width: 100%;
       display: block;
@@ -50,39 +50,14 @@
       background-repeat: no-repeat;
     }
 
-    /* Третий блок – фото с кружками */
+    /* Третий блок – фоновое фото без кружков (просто фото) */
     .block-bg-3 {
       background-image: url('image_2026-08-11_12-04-560.png');
-      background-position: center bottom;
+      background-position: center;
       height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 90px;
     }
-    .circles {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .circle {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      border: 2px solid #f3a4b4;
-      box-shadow: none;
-      transition: transform 0.2s ease;
-    }
-    .circle-1 { background: #ffffff; }
-    .circle-2 { background: #fdf6ee; }
-    .circle-3 { background: #f5ede0; }
-    .circle-4 { background: #f0e6d3; }
-    .circle-5 { background: #e8dcc8; }
-    .circle:hover { transform: scale(1.05); }
 
-    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (цвет #878778, кнопка с заливкой) ===== */
+    /* ===== ЧЕТВЁРТЫЙ БЛОК – ФОНОВОЕ ФОТО + АНКЕТА ===== */
     .block-bg-4 {
       background-image: url('image_2026-08-11_12-37-089.png');
       background-size: cover;
@@ -230,15 +205,15 @@
       margin: 0;
     }
 
-    /* ===== КНОПКА С ЗАЛИВКОЙ ===== */
+    /* Кнопка с заливкой */
     .rsvp button {
       width: 100%;
       margin-top: 40px;
       padding: 14px;
-      border: none;                 /* убрали обводку */
+      border: none;
       border-radius: 50px;
-      background: #f3a4b4;          /* розовая заливка */
-      color: #fff;                 /* белый текст */
+      background: #f3a4b4;
+      color: #fff;
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
@@ -246,7 +221,7 @@
       text-shadow: none;
     }
     .rsvp button:hover {
-      background: #e88a9d;          /* темнее при наведении */
+      background: #e88a9d;
     }
     .rsvp button:active {
       transform: scale(0.97);
@@ -278,9 +253,7 @@
 
     /* Адаптив */
     @media (max-width: 680px) {
-      .block-bg-3 { padding-bottom: 70px; }
-      .circle { width: 60px; height: 60px; }
-      .circles { gap: 18px; }
+      .block-bg-3 { height: 80vh; }
       .rsvp {
         padding-left: 20px;
         padding-right: 10px;
@@ -293,9 +266,7 @@
       .block-bg-4 { padding: 20px 15px; }
     }
     @media (max-width: 480px) {
-      .block-bg-3 { padding-bottom: 60px; }
-      .circle { width: 50px; height: 50px; }
-      .circles { gap: 14px; }
+      .block-bg-3 { height: 70vh; }
       .rsvp {
         padding-left: 15px;
         margin-top: 40px;
@@ -315,16 +286,8 @@
     <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
   </div>
 
-  <!-- БЛОК 3: ФОНОВОЕ ФОТО + КРУЖКИ -->
-  <div class="block-bg block-bg-3">
-    <div class="circles">
-      <span class="circle circle-1"></span>
-      <span class="circle circle-2"></span>
-      <span class="circle circle-3"></span>
-      <span class="circle circle-4"></span>
-      <span class="circle circle-5"></span>
-    </div>
-  </div>
+  <!-- БЛОК 3: ФОНОВОЕ ФОТО (без кружков) -->
+  <div class="block-bg block-bg-3"></div>
 
   <!-- БЛОК 4: ФОНОВОЕ ФОТО + АНКЕТА -->
   <div class="block-bg block-bg-4">
