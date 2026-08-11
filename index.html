@@ -3,15 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Приглашение на 1 годик Настюше</title>
-
-    <!-- Open Graph (для соцсетей) -->
-    <meta property="og:title" content="Приглашение на 1 годик Настюше" />
-    <meta property="og:description" content="6 сентября 2026 — приглашаем на праздник!" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="URL_ВАШЕЙ_СТРАНИЦЫ" />
-    <meta property="og:image" content="URL_ИЗОБРАЖЕНИЯ_ДЛЯ_ПРЕВЬЮ" />
-
+    <title>Фото</title>
     <style>
         * {
             margin: 0;
@@ -22,242 +14,40 @@
         body {
             overflow-y: scroll;
             background: #ffffff;
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: sans-serif;
         }
 
-        /* Первый блок – фото как картинка (занимает столько места, сколько нужно) */
-        .block-photo {
+        /* Первый блок – фото как картинка (занимает свою натуральную высоту) */
+        .block-img {
             width: 100%;
             display: block;
         }
-
-        .block-photo img {
+        .block-img img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Второй блок – фон с текстом */
-        .block-invite {
+        /* Второй блок – фоновое фото на весь экран */
+        .block-bg {
             width: 100%;
-            min-height: 100vh;               /* чтобы был на весь экран, но может растягиваться */
-            background-image: url('image_2026-08-11_11-49-083.png');
+            height: 100vh;
+            background-image: url('image_2026-08-11_11-41-430.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px 20px;
-        }
-
-        /* Полупрозрачная подложка – теперь плотнее (читаемость без обводок) */
-        .overlay {
-            background: rgba(255, 255, 255, 0.65);
-            padding: 40px 35px;
-            border-radius: 28px;
-            max-width: 760px;
-            width: 100%;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-        }
-
-        /* Основные цвета */
-        .color-pink {
-            color: #f3a4b4;
-        }
-        .color-green {
-            color: #9bbf8b;
-        }
-        .color-dark {
-            color: #3a3a3a;
-        }
-
-        /* Текст – без обводок и теней */
-        .invite-title {
-            font-size: 2.4rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 6px;
-        }
-
-        .invite-subtitle {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-top: -4px;
-        }
-
-        .invite-date {
-            font-size: 3.4rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-top: 8px;
-        }
-        .invite-date .day {
-            color: #f3a4b4;
-        }
-        .invite-date .month-year {
-            color: #9bbf8b;
-            font-size: 1.6rem;
-            font-weight: 400;
-            display: block;
-        }
-        .invite-weekday {
-            font-size: 1.1rem;
-            color: #9bbf8b;
-            letter-spacing: 3px;
-            margin-bottom: 12px;
-        }
-
-        .divider {
-            width: 50px;
-            height: 2px;
-            background: #f3a4b4;
-            margin: 14px auto;
-            border-radius: 2px;
-        }
-
-        .address {
-            font-size: 1.3rem;
-            line-height: 1.7;
-            color: #3a3a3a;
-        }
-        .address .place {
-            font-weight: 600;
-            color: #f3a4b4;
-        }
-        .address .street {
-            color: #9bbf8b;
-            font-weight: 500;
-        }
-        .address .space {
-            color: #3a3a3a;
-        }
-        .address .trend {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #f3a4b4;
-        }
-
-        .btn-map {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 10px 32px;
-            background: #f3a4b4;
-            color: #fff;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 40px;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.1s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(243, 164, 180, 0.25);
-            outline: none; /* убираем обводку */
-        }
-        .btn-map:hover {
-            background: #e88a9d;
-        }
-        .btn-map:active {
-            transform: scale(0.97);
-        }
-        .btn-map:focus-visible {
-            outline: 2px solid #f3a4b4;
-            outline-offset: 2px;
-        }
-
-        .timing {
-            margin-top: 18px;
-            font-size: 1.1rem;
-            line-height: 1.9;
-            color: #3a3a3a;
-        }
-        .timing .time-highlight {
-            color: #f3a4b4;
-            font-weight: 600;
-        }
-        .timing .time-green {
-            color: #9bbf8b;
-            font-weight: 500;
-        }
-
-        /* Адаптив */
-        @media (max-width: 600px) {
-            .overlay {
-                padding: 24px 18px;
-            }
-            .invite-title {
-                font-size: 1.6rem;
-            }
-            .invite-subtitle {
-                font-size: 1.4rem;
-            }
-            .invite-date {
-                font-size: 2.4rem;
-            }
-            .invite-date .month-year {
-                font-size: 1.2rem;
-            }
-            .address {
-                font-size: 1rem;
-            }
-            .address .trend {
-                font-size: 1.1rem;
-            }
-            .timing {
-                font-size: 0.95rem;
-            }
-            .btn-map {
-                font-size: 0.9rem;
-                padding: 8px 22px;
-            }
-            .block-invite {
-                padding: 20px 12px;
-                min-height: 100vh;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Первый блок – фото как картинка (занимает ровно столько места, сколько нужно) -->
-    <div class="block-photo">
-        <img src="image_2026-08-11_11-27-148.png" alt="Фото" />
+    <!-- Первое фото (обычная картинка) -->
+    <div class="block-img">
+        <img src="image_2026-08-11_11-27-148.png" alt="Фото 1" />
     </div>
 
-    <!-- Второй блок – фон с текстом -->
-    <div class="block-invite">
-        <div class="overlay">
-            <h1 class="invite-title color-green">Приглашение на 1 годик</h1>
-            <h2 class="invite-subtitle color-pink">Настюше</h2>
-
-            <div class="invite-date">
-                <span class="day">6</span>
-                <span class="day" style="font-weight:400; color:#3a3a3a;">сентября</span>
-                <span class="month-year">сентябрь 2026</span>
-            </div>
-            <div class="invite-weekday">воскресенье</div>
-
-            <div class="divider"></div>
-
-            <div class="address">
-                <span class="place">Хатежино</span><br />
-                <span class="street">Полевая 17</span><br />
-                <span class="space">Ивент пространство</span><br />
-                <span class="trend">Party Trend</span>
-            </div>
-
-            <a href="#" class="btn-map">Показать на карте</a>
-
-            <div class="divider" style="width:40px; margin:14px auto;"></div>
-
-            <div class="timing">
-                <div><span class="time-highlight">16:00</span> сбор гостей</div>
-                <div><span class="time-highlight">16:00 – 22:00</span> <span class="time-green">праздничный ужин,</span> развлечения для детей и взрослых</div>
-                <div><span class="time-highlight">22:30</span> заключительная часть вечера</div>
-            </div>
-        </div>
-    </div>
+    <!-- Второе фото (фон на весь экран) -->
+    <div class="block-bg"></div>
 
 </body>
 </html>
