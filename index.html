@@ -46,21 +46,21 @@
     /* Фоновые блоки */
     .block-bg {
       width: 100%;
-      background-size: cover;
+      background-size: contain;      /* теперь фото вмещается целиком */
       background-repeat: no-repeat;
-    }
-
-    /* Третий блок – фоновое фото без кружков, без обрезки */
-    .block-bg-3 {
-      background-image: url('image_2026-08-11_12-04-560.png');
       background-position: center;
       height: 100vh;
     }
 
-    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (зелёный цвет #9bbf8b) ===== */
+    /* Третий блок – фоновое фото без кружков */
+    .block-bg-3 {
+      background-image: url('image_2026-08-11_12-04-560.png');
+    }
+
+    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (цвет #878778) ===== */
     .block-bg-4 {
       background-image: url('image_2026-08-11_12-37-089.png');
-      background-size: cover;
+      background-size: contain;      /* фото целиком */
       background-position: center;
       width: 100%;
       min-height: 100vh;
@@ -76,7 +76,7 @@
       margin: 0;
       margin-top: 80px;
       background: transparent;
-      color: #9bbf8b;                /* пастельно-зелёный */
+      color: #878778;               /* основной цвет анкеты */
       text-align: left;
       padding: 20px 10px 20px 30px;
     }
@@ -90,22 +90,22 @@
       font-size: 16px;
       margin: 22px 0 8px;
       font-weight: 500;
-      color: #9bbf8b;                /* зелёный */
+      color: #878778;
       text-shadow: none;
     }
 
     .rsvp input[type="text"] {
       width: 100%;
       border: none;
-      border-bottom: 1px solid #9bbf8b;
+      border-bottom: 1px solid #878778;
       background: transparent;
       padding: 10px 0;
-      color: #9bbf8b;
+      color: #878778;
       outline: none;
       font-size: 16px;
     }
     .rsvp input[type="text"]::placeholder {
-      color: #9bbf8b;
+      color: #878778;
       opacity: 0.7;
     }
 
@@ -117,7 +117,7 @@
       margin: 10px 0;
       cursor: pointer;
       font-weight: normal;
-      color: #9bbf8b;
+      color: #878778;
       position: relative;
     }
     .rsvp .custom-radio input {
@@ -130,7 +130,7 @@
       display: inline-block;
       width: 22px;
       height: 22px;
-      border: 2px solid #9bbf8b;
+      border: 2px solid #878778;
       border-radius: 50%;
       position: relative;
       transition: all 0.2s;
@@ -161,7 +161,7 @@
       margin: 6px 0;
       cursor: pointer;
       font-weight: normal;
-      color: #9bbf8b;
+      color: #878778;
     }
     .rsvp .custom-checkbox input {
       position: absolute;
@@ -173,7 +173,7 @@
       display: inline-block;
       width: 22px;
       height: 22px;
-      border: 2px solid #9bbf8b;
+      border: 2px solid #878778;
       border-radius: 4px;
       position: relative;
       transition: all 0.2s;
@@ -205,14 +205,14 @@
       margin: 0;
     }
 
-    /* Кнопка с зелёной заливкой */
+    /* Кнопка с заливкой #878778 */
     .rsvp button {
       width: 100%;
       margin-top: 40px;
       padding: 14px;
       border: none;
       border-radius: 50px;
-      background: #9bbf8b;            /* пастельно-зелёная заливка */
+      background: #878778;            /* основной цвет */
       color: #fff;
       font-size: 16px;
       font-weight: 500;
@@ -221,7 +221,7 @@
       text-shadow: none;
     }
     .rsvp button:hover {
-      background: #88b077;            /* чуть темнее при наведении */
+      background: #6f6f66;            /* темнее при наведении */
     }
     .rsvp button:active {
       transform: scale(0.97);
@@ -231,13 +231,13 @@
       margin-top: 20px;
       padding: 14px 18px;
       background: rgba(255, 255, 255, 0.85);
-      color: #9bbf8b;
+      color: #878778;
       border-radius: 12px;
       font-size: 17px;
       font-weight: 400;
       text-align: center;
       display: none;
-      border: 1px solid #9bbf8b;
+      border: 1px solid #878778;
       width: 100%;
       max-width: 340px;
       box-sizing: border-box;
@@ -286,10 +286,10 @@
     <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
   </div>
 
-  <!-- БЛОК 3: ФОНОВОЕ ФОТО (без кружков, без обрезки) -->
+  <!-- БЛОК 3: ФОНОВОЕ ФОТО (без кружков, contain) -->
   <div class="block-bg block-bg-3"></div>
 
-  <!-- БЛОК 4: ФОНОВОЕ ФОТО + АНКЕТА (зелёный цвет) -->
+  <!-- БЛОК 4: ФОНОВОЕ ФОТО (contain) + АНКЕТА (цвет #878778) -->
   <div class="block-bg block-bg-4">
     <section class="rsvp">
       <form id="rsvpForm">
