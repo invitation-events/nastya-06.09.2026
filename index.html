@@ -82,7 +82,7 @@
     .circle-5 { background: #e8dcc8; }
     .circle:hover { transform: scale(1.05); }
 
-    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (чёрный шрифт, смещена влево) ===== */
+    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (чёрный шрифт, смещена влево, опущена ниже) ===== */
     .block-bg-4 {
       background-image: url('image_2026-08-11_12-37-089.png');
       background-size: cover;
@@ -90,7 +90,7 @@
       width: 100%;
       min-height: 100vh;
       display: flex;
-      justify-content: flex-start;   /* прижимаем к левому краю */
+      justify-content: flex-start;
       align-items: center;
       padding: 30px 20px;
     }
@@ -99,8 +99,9 @@
       width: 100%;
       max-width: 580px;
       margin: 0;
+      margin-top: 40px;            /* ← ОПУСТИЛИ АНКЕТУ НИЖЕ */
       background: transparent;
-      color: #1e1e1e;               /* чёрный шрифт */
+      color: #1e1e1e;
       text-align: left;
       padding: 20px 10px 20px 30px; /* увеличен отступ слева */
     }
@@ -114,14 +115,14 @@
       font-size: 16px;
       margin: 22px 0 8px;
       font-weight: 500;
-      color: #1e1e1e;               /* чёрный */
-      text-shadow: none;            /* убрали тень */
+      color: #1e1e1e;
+      text-shadow: none;
     }
 
     .rsvp input[type="text"] {
       width: 100%;
       border: none;
-      border-bottom: 1px solid #1e1e1e; /* чёрная линия */
+      border-bottom: 1px solid #1e1e1e;
       background: transparent;
       padding: 10px 0;
       color: #1e1e1e;
@@ -132,7 +133,7 @@
       color: #888;
     }
 
-    /* Кастомные радио-кнопки – чёрная обводка, розовое выделение */
+    /* Кастомные радио-кнопки */
     .rsvp .custom-radio {
       display: flex;
       align-items: center;
@@ -153,7 +154,7 @@
       display: inline-block;
       width: 22px;
       height: 22px;
-      border: 2px solid #1e1e1e;     /* чёрная обводка */
+      border: 2px solid #1e1e1e;
       border-radius: 50%;
       position: relative;
       transition: all 0.2s;
@@ -161,7 +162,7 @@
       background: transparent;
     }
     .rsvp .custom-radio input:checked ~ .radio-mark {
-      border-color: #f3a4b4;         /* розовый при выборе */
+      border-color: #f3a4b4;
       background: rgba(243, 164, 180, 0.2);
     }
     .rsvp .custom-radio input:checked ~ .radio-mark::after {
@@ -173,10 +174,10 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #f3a4b4;           /* розовая точка */
+      background: #f3a4b4;
     }
 
-    /* Чекбоксы – чёрная обводка, розовый фон при выборе */
+    /* Чекбоксы */
     .rsvp .custom-checkbox {
       display: flex;
       align-items: center;
@@ -196,7 +197,7 @@
       display: inline-block;
       width: 22px;
       height: 22px;
-      border: 2px solid #1e1e1e;     /* чёрная обводка */
+      border: 2px solid #1e1e1e;
       border-radius: 4px;
       position: relative;
       transition: all 0.2s;
@@ -204,7 +205,7 @@
       background: transparent;
     }
     .rsvp .custom-checkbox input:checked ~ .checkmark {
-      background: #f3a4b4;           /* розовый фон */
+      background: #f3a4b4;
       border-color: #f3a4b4;
     }
     .rsvp .custom-checkbox input:checked ~ .checkmark::after {
@@ -232,7 +233,7 @@
       width: 100%;
       margin-top: 40px;
       padding: 14px;
-      border: 1px solid #1e1e1e;     /* чёрная обводка */
+      border: 1px solid #1e1e1e;
       border-radius: 50px;
       background: transparent;
       color: #1e1e1e;
@@ -247,7 +248,6 @@
       color: #fff;
     }
 
-    /* Сообщение под кнопкой – чёрный текст на светлом фоне */
     .form-message {
       margin-top: 20px;
       padding: 14px 18px;
@@ -277,7 +277,7 @@
       .block-bg-3 { padding-bottom: 70px; }
       .circle { width: 60px; height: 60px; }
       .circles { gap: 18px; }
-      .rsvp { padding-left: 20px; padding-right: 10px; }
+      .rsvp { padding-left: 20px; padding-right: 10px; margin-top: 30px; }
       .rsvp label { font-size: 15px; }
       .rsvp input[type="text"] { font-size: 15px; }
       .rsvp button { font-size: 15px; padding: 12px; }
@@ -288,7 +288,7 @@
       .block-bg-3 { padding-bottom: 60px; }
       .circle { width: 50px; height: 50px; }
       .circles { gap: 14px; }
-      .rsvp { padding-left: 15px; }
+      .rsvp { padding-left: 15px; margin-top: 25px; }
     }
   </style>
 </head>
@@ -315,7 +315,7 @@
     </div>
   </div>
 
-  <!-- БЛОК 4: ФОНОВОЕ ФОТО + АНКЕТА (без заголовка, чёрный шрифт, смещена влево) -->
+  <!-- БЛОК 4: ФОНОВОЕ ФОТО + АНКЕТА (опущена ниже) -->
   <div class="block-bg block-bg-4">
     <section class="rsvp">
       <form id="rsvpForm">
