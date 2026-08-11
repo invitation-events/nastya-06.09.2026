@@ -14,7 +14,7 @@
         body {
             overflow-y: scroll;
             background: #ffffff;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
         }
 
         /* Блоки с картинками (обычные img) */
@@ -44,20 +44,19 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding-bottom: 70px;           /* опустили кружки ниже (было 170px) */
+            padding-bottom: 70px;
         }
 
-        /* Кружки – нежно-розовая обводка */
         .circles {
             display: flex;
-            gap: 14px;
+            gap: 24px;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .circle {
-            width: 36px;
-            height: 36px;
+            width: 72px;
+            height: 72px;
             border-radius: 50%;
             border: 2px solid #f3a4b4;
             box-shadow: none;
@@ -74,34 +73,237 @@
             transform: scale(1.05);
         }
 
+        /* ---- Четвёртый блок: фон + анкета (без карточки) ---- */
+        .block-bg-4 {
+            background-image: url('image_2026-08-11_12-37-089.png');
+            background-position: center;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Контейнер анкеты – прозрачный, только отступы */
+        .survey-overlay {
+            width: 100%;
+            max-width: 700px;
+            padding: 20px 10px;          /* минимальные отступы для воздуха */
+            /* фона нет, карточки нет */
+        }
+
+        .survey-overlay .form-group {
+            margin-bottom: 26px;
+        }
+        .survey-overlay .form-group:last-of-type {
+            margin-bottom: 18px;
+        }
+
+        /* Заголовки – с тенью для читаемости */
+        .survey-overlay .form-group > label {
+            display: block;
+            font-weight: 600;
+            color: #9bbf8b;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Поля ввода – полупрозрачный белый фон */
+        .survey-overlay input[type="text"],
+        .survey-overlay input[type="number"] {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            transition: border 0.2s, background 0.2s;
+            color: #333;
+        }
+        .survey-overlay input[type="text"]:focus,
+        .survey-overlay input[type="number"]:focus {
+            outline: none;
+            border-color: #f3a4b4;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Радио и чекбоксы – на прозрачном фоне */
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+            align-items: center;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            font-weight: normal;
+            font-size: 1rem;
+            margin-bottom: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            color: #fff;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Кастомные радио и чекбоксы – белые с розовым выделением */
+        .radio-group input[type="radio"],
+        .checkbox-group input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.15s;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+        .radio-group input[type="radio"]:checked {
+            border-color: #f3a4b4;
+            background: #f3a4b4;
+            box-shadow: inset 0 0 0 4px #fff;
+        }
+        .radio-group input[type="radio"]:hover {
+            border-color: #f3a4b4;
+        }
+        .checkbox-group input[type="checkbox"] {
+            border-radius: 4px;
+        }
+        .checkbox-group input[type="checkbox"]:checked {
+            border-color: #f3a4b4;
+            background: #f3a4b4;
+            box-shadow: inset 0 0 0 4px #fff;
+        }
+        .checkbox-group input[type="checkbox"]:hover {
+            border-color: #f3a4b4;
+        }
+
+        /* Поля для количества гостей (появляются при выборе "Да") */
+        .sub-fields {
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 3px solid rgba(255, 255, 255, 0.6);
+            display: none;
+            flex-wrap: wrap;
+            gap: 16px;
+            animation: fadeIn 0.25s ease;
+        }
+        .sub-fields.visible {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sub-fields .field {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            flex: 1 1 120px;
+        }
+        .sub-fields .field label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #9bbf8b;
+            margin-bottom: 0;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+        .sub-fields .field input {
+            width: 100%;
+            padding: 6px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            transition: background 0.2s;
+        }
+        .sub-fields .field input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.8);
+            border-color: #f3a4b4;
+        }
+
+        /* Кнопка отправки – полупрозрачная, с розовым фоном */
+        .btn-submit {
+            background: rgba(243, 164, 180, 0.85);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 12px 36px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            margin-top: 6px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+        .btn-submit:hover {
+            background: rgba(232, 138, 157, 0.9);
+        }
+        .btn-submit:active {
+            transform: scale(0.97);
+        }
+
         @media (max-width: 600px) {
+            .block-bg-3 {
+                padding-bottom: 60px;
+            }
             .circle {
-                width: 30px;
-                height: 30px;
-                border-width: 2px;
+                width: 60px;
+                height: 60px;
             }
             .circles {
+                gap: 18px;
+            }
+            .survey-overlay {
+                padding: 15px 8px;
+            }
+            .radio-group,
+            .checkbox-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+            .sub-fields {
+                flex-direction: column;
                 gap: 10px;
             }
-            .block-bg-3 {
-                padding-bottom: 50px;       /* на мобилках тоже ниже */
+            .survey-overlay .form-group > label {
+                font-size: 1rem;
+            }
+            .block-bg-4 {
+                padding: 20px 12px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Первое фото (обычная картинка) -->
+    <!-- Блок 1: фото -->
     <div class="block-img">
         <img src="image_2026-08-11_11-27-148.png" alt="Фото 1" />
     </div>
 
-    <!-- Второе фото (обычная картинка) -->
+    <!-- Блок 2: фото -->
     <div class="block-img">
         <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
     </div>
 
-    <!-- Третий блок – фон с кружками (обрезан сверху) -->
+    <!-- Блок 3: фон + кружки -->
     <div class="block-bg block-bg-3">
         <div class="circles">
             <span class="circle circle-1"></span>
@@ -112,10 +314,93 @@
         </div>
     </div>
 
-    <!-- Четвёртое фото – обычная картинка (занимает столько места, сколько нужно) -->
-    <div class="block-img">
-        <img src="image_2026-08-11_12-37-089.png" alt="Фото 4" />
+    <!-- Блок 4: фон + анкета (без карточки) -->
+    <div class="block-bg block-bg-4">
+        <div class="survey-overlay">
+            <form id="guestForm">
+
+                <!-- Имя и фамилия -->
+                <div class="form-group">
+                    <label>Ваше имя и фамилия</label>
+                    <input type="text" placeholder="Например, Анна Иванова" />
+                </div>
+
+                <!-- Присутствие -->
+                <div class="form-group">
+                    <label>Будете ли присутствовать?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="attendance" value="yes" /> Да</label>
+                        <label><input type="radio" name="attendance" value="no" /> Нет</label>
+                        <label><input type="radio" name="attendance" value="maybe" /> Не знаю</label>
+                    </div>
+                    <div class="sub-fields" id="guestCountFields">
+                        <div class="field">
+                            <label>Количество гостей с вами (взрослых)</label>
+                            <input type="number" name="adults" min="0" value="0" />
+                        </div>
+                        <div class="field">
+                            <label>Количество детей</label>
+                            <input type="number" name="children" min="0" value="0" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Алкоголь -->
+                <div class="form-group">
+                    <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="alcohol" value="wine" /> Вино</label>
+                        <label><input type="checkbox" name="alcohol" value="whisky" /> Виски / Ром</label>
+                        <label><input type="checkbox" name="alcohol" value="beer" /> Пиво</label>
+                        <label><input type="checkbox" name="alcohol" value="champagne" /> Шампанское</label>
+                        <label><input type="checkbox" name="alcohol" value="none" /> Не пью алкоголь</label>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-submit" onclick="submitForm()">Отправить</button>
+            </form>
+        </div>
     </div>
+
+    <script>
+        const radioButtons = document.querySelectorAll('input[name="attendance"]');
+        const guestFields = document.getElementById('guestCountFields');
+
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'yes' && this.checked) {
+                    guestFields.classList.add('visible');
+                } else {
+                    guestFields.classList.remove('visible');
+                }
+            });
+        });
+
+        function submitForm() {
+            const name = document.querySelector('input[placeholder]').value.trim() || 'не указано';
+            const attendance = document.querySelector('input[name="attendance"]:checked');
+            const adults = document.querySelector('input[name="adults"]').value;
+            const children = document.querySelector('input[name="children"]').value;
+            const alcoholChecks = document.querySelectorAll('input[name="alcohol"]:checked');
+            const alcoholValues = Array.from(alcoholChecks).map(cb => cb.value);
+
+            if (!attendance) {
+                alert('Пожалуйста, выберите вариант присутствия.');
+                return;
+            }
+
+            let message = 'Ваш ответ:\n';
+            message += 'Имя: ' + name + '\n';
+            message += 'Присутствие: ' + attendance.value + '\n';
+            if (attendance.value === 'yes') {
+                message += 'Взрослых: ' + adults + '\n';
+                message += 'Детей: ' + children + '\n';
+            }
+            message += 'Алкоголь: ' + (alcoholValues.length ? alcoholValues.join(', ') : 'Не выбрано');
+
+            alert(message);
+        }
+    </script>
 
 </body>
 </html>
