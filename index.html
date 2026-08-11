@@ -1,390 +1,426 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Фото</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Приглашение</title>
+  <!-- Шрифты (из примера) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        body {
-            overflow-y: scroll;
-            background: #ffffff;
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1e1e1e;
+      line-height: 1.5;
+      overflow-y: scroll;
+    }
+    h1, h2, h3, .hero .names, .date, .love, .title, .month, .location h2, .timing h2,
+    .dresscode-section h2, .details-section h2, .wedding-block h1,
+    .contacts-block h2, .invite, .names-sign, .music-text, .time, .sub, .subtitle,
+    .timer span, .calendar-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+    p, .text, .desc, .person, .address, .footer-text, .note, label, .radio-group, button, .btn, .btn-location, .time {
+      font-family: 'Inter', sans-serif;
+    }
 
-        /* Блоки с картинками (обычные img) */
-        .block-img {
-            width: 100%;
-            display: block;
-        }
-        .block-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    /* ===== БЛОКИ С КАРТИНКАМИ ===== */
+    .block-img {
+      width: 100%;
+      display: block;
+    }
+    .block-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
-        /* Фоновые блоки */
-        .block-bg {
-            width: 100%;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
+    /* ===== ФОНОВЫЕ БЛОКИ ===== */
+    .block-bg {
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
 
-        /* Третий блок – фото с кружками (обрезан сверху) */
-        .block-bg-3 {
-            background-image: url('image_2026-08-11_12-04-560.png');
-            background-position: center bottom;
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 90px;
-        }
+    /* Третий блок – фото с кружками (обрезан сверху) */
+    .block-bg-3 {
+      background-image: url('image_2026-08-11_12-04-560.png');
+      background-position: center bottom;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 90px;
+    }
+    .circles {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid #f3a4b4;
+      box-shadow: none;
+      transition: transform 0.2s ease;
+    }
+    .circle-1 { background: #ffffff; }
+    .circle-2 { background: #fdf6ee; }
+    .circle-3 { background: #f5ede0; }
+    .circle-4 { background: #f0e6d3; }
+    .circle-5 { background: #e8dcc8; }
+    .circle:hover { transform: scale(1.05); }
 
-        .circles {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    /* ===== ЧЕТВЁРТЫЙ БЛОК – АНКЕТА (как в примере) ===== */
+    .block-bg-4 {
+      background-image: url('image_2026-08-11_12-37-089.png');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      min-height: 100vh;          /* занимает экран, чтобы фон был виден */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+    }
 
-        .circle {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            border: 2px solid #f3a4b4;
-            box-shadow: none;
-            transition: transform 0.2s ease;
-        }
+    /* ===== СТИЛИ АНКЕТЫ (скопированы из эталона) ===== */
+    .rsvp {
+      width: 100%;
+      max-width: 580px;
+      margin: 0 auto;
+      background: transparent;    /* прозрачный фон, чтобы видно было фото */
+      color: #fff;
+      text-align: center;
+      padding: 0;
+    }
+    .rsvp .container {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .rsvp h2 {
+      font-size: 44px;
+      margin-bottom: 10px;
+      font-weight: 400;
+      font-family: 'Cormorant Garamond', serif;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .rsvp .note {
+      font-size: 16px;
+      margin-bottom: 32px;
+      opacity: 0.9;
+      margin-top: 0;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .rsvp form {
+      text-align: left;
+    }
+    .rsvp label {
+      display: block;
+      font-size: 16px;
+      margin: 22px 0 8px;
+      font-weight: 500;
+      color: #fff;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    .rsvp input[type="text"] {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.7);
+      background: transparent;
+      padding: 10px 0;
+      color: #fff;
+      outline: none;
+      font-size: 16px;
+    }
+    .rsvp input[type="text"]::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+    /* Кастомные радио-кнопки */
+    .rsvp .custom-radio {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 0;
+      cursor: pointer;
+      font-weight: normal;
+      color: #fff;
+      position: relative;
+    }
+    .rsvp .custom-radio input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .rsvp .radio-mark {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      position: relative;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .rsvp .custom-radio input:checked ~ .radio-mark {
+      border-color: #f5e6d3;
+      background: rgba(255,255,255,0.2);
+    }
+    .rsvp .custom-radio input:checked ~ .radio-mark::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f5e6d3;
+    }
+    /* Чекбоксы */
+    .rsvp .custom-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 6px 0;
+      cursor: pointer;
+      font-weight: normal;
+      color: #fff;
+    }
+    .rsvp .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .rsvp .checkmark {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(255,255,255,0.7);
+      border-radius: 4px;
+      position: relative;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .rsvp .custom-checkbox input:checked ~ .checkmark {
+      background: #fff;
+      border-color: #fff;
+    }
+    .rsvp .custom-checkbox input:checked ~ .checkmark::after {
+      content: "✓";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #b7a99a;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .rsvp .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .rsvp .checkbox-group .custom-checkbox {
+      margin: 0;
+    }
 
-        .circle-1 { background: #ffffff; }
-        .circle-2 { background: #fdf6ee; }
-        .circle-3 { background: #f5ede0; }
-        .circle-4 { background: #f0e6d3; }
-        .circle-5 { background: #e8dcc8; }
+    .rsvp button {
+      width: 100%;
+      margin-top: 40px;
+      padding: 14px;
+      border: 1px solid #fff;
+      border-radius: 50px;
+      background: transparent;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .rsvp button:hover {
+      background: #fff;
+      color: #b7a99a;
+    }
 
-        .circle:hover {
-            transform: scale(1.05);
-        }
+    /* Сообщение под кнопкой */
+    .form-message {
+      margin-top: 20px;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #3d2c1b;
+      border-radius: 12px;
+      font-size: 17px;
+      font-weight: 400;
+      text-align: center;
+      display: none;
+      border: 1px solid #d4c5b2;
+      width: 100%;
+      max-width: 340px;
+      box-sizing: border-box;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .form-message.show { display: block; }
+    .form-message.error {
+      background: rgba(252, 228, 224, 0.9);
+      color: #7a2e1a;
+      border-color: #dbb0a8;
+    }
 
-        /* ===== ЧЕТВЁРТЫЙ БЛОК – ПЕРЕРАБОТАН ===== */
-        .block-bg-4 {
-            background-image: url('image_2026-08-11_12-37-089.png');
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            padding: 40px 20px;
-            height: auto;               /* высота по содержимому */
-            display: flex;
-            justify-content: center;
-        }
-
-        .survey {
-            max-width: 650px;
-            width: 100%;
-            /* никакого фона, только отступы */
-            padding: 0;
-        }
-
-        /* Каждая группа – вопрос */
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .form-group > label {
-            display: block;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #9bbf8b;
-            margin-bottom: 6px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Поля ввода – сплошной белый фон */
-        .form-group input[type="text"],
-        .form-group input[type="number"] {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: #ffffff;
-            color: #333;
-            transition: border 0.2s;
-        }
-        .form-group input[type="text"]:focus,
-        .form-group input[type="number"]:focus {
-            outline: none;
-            border-color: #f3a4b4;
-        }
-
-        /* Группа радиокнопок и чекбоксов – элементы в столбик */
-        .radio-group, .checkbox-group {
-            display: flex;
-            flex-direction: column;   /* все в столбик */
-            gap: 8px;
-            margin-top: 4px;
-        }
-
-        .radio-group label,
-        .checkbox-group label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1rem;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            line-height: 1.4;
-        }
-
-        /* Кастомные радио и чекбоксы */
-        .radio-group input[type="radio"],
-        .checkbox-group input[type="checkbox"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #fff;
-            border-radius: 50%;
-            flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.15);
-            transition: all 0.15s;
-            cursor: pointer;
-            position: relative;
-        }
-        .radio-group input[type="radio"]:checked {
-            border-color: #f3a4b4;
-            background: #f3a4b4;
-            box-shadow: inset 0 0 0 4px #fff;
-        }
-        .checkbox-group input[type="checkbox"] {
-            border-radius: 4px;
-        }
-        .checkbox-group input[type="checkbox"]:checked {
-            border-color: #f3a4b4;
-            background: #f3a4b4;
-            box-shadow: inset 0 0 0 4px #fff;
-        }
-
-        /* Блок дополнительных полей (количество гостей) */
-        .sub-fields {
-            margin-top: 12px;
-            padding-left: 16px;
-            border-left: 3px solid #f3a4b4;
-            display: none;
-            flex-direction: column;   /* столбик */
-            gap: 12px;
-            animation: fadeIn 0.25s ease;
-        }
-        .sub-fields.visible {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-6px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .sub-fields .field {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .sub-fields .field label {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #9bbf8b;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-        }
-        .sub-fields .field input {
-            width: 100%;
-            max-width: 180px;          /* не растягиваем на всю ширину */
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            background: #ffffff;
-        }
-
-        .btn-submit {
-            background: #f3a4b4;
-            border: none;
-            padding: 8px 24px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            width: 100%;
-            max-width: 200px;           /* чтобы кнопка не на весь экран */
-            margin-top: 16px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
-        .btn-submit:hover {
-            background: #e88a9d;
-        }
-        .btn-submit:active {
-            transform: scale(0.97);
-        }
-
-        /* АДАПТИВНОСТЬ */
-        @media (max-width: 600px) {
-            .block-bg-3 {
-                padding-bottom: 70px;
-            }
-            .circle {
-                width: 50px;
-                height: 50px;
-            }
-            .circles {
-                gap: 16px;
-            }
-
-            .block-bg-4 {
-                padding: 30px 16px;
-            }
-            .form-group {
-                margin-bottom: 16px;
-            }
-            .form-group > label {
-                font-size: 1rem;
-            }
-            .radio-group label,
-            .checkbox-group label {
-                font-size: 0.9rem;
-            }
-            .sub-fields .field input {
-                max-width: 100%;        /* на телефоне поля растягиваются */
-            }
-            .btn-submit {
-                max-width: 100%;
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-        }
-    </style>
+    /* ===== АДАПТИВНОСТЬ ===== */
+    @media (max-width: 680px) {
+      .block-bg-3 { padding-bottom: 70px; }
+      .circle { width: 60px; height: 60px; }
+      .circles { gap: 18px; }
+      .rsvp h2 { font-size: 32px; }
+      .rsvp .container { padding: 0 10px; }
+      .rsvp label { font-size: 15px; }
+      .rsvp input[type="text"] { font-size: 15px; }
+      .rsvp button { font-size: 15px; padding: 12px; }
+      .form-message { font-size: 15px; padding: 12px 16px; }
+      .block-bg-4 { padding: 20px 15px; }
+    }
+    @media (max-width: 480px) {
+      .block-bg-3 { padding-bottom: 60px; }
+      .circle { width: 50px; height: 50px; }
+      .circles { gap: 14px; }
+      .rsvp h2 { font-size: 26px; }
+      .rsvp .note { font-size: 14px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Блок 1: фото -->
-    <div class="block-img">
-        <img src="image_2026-08-11_11-27-148.png" alt="Фото 1" />
+  <!-- БЛОК 1: ФОТО (обычная картинка) -->
+  <div class="block-img">
+    <img src="image_2026-08-11_11-27-148.png" alt="Фото 1" />
+  </div>
+
+  <!-- БЛОК 2: ФОТО (обычная картинка) -->
+  <div class="block-img">
+    <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
+  </div>
+
+  <!-- БЛОК 3: ФОНОВОЕ ФОТО + КРУЖКИ -->
+  <div class="block-bg block-bg-3">
+    <div class="circles">
+      <span class="circle circle-1"></span>
+      <span class="circle circle-2"></span>
+      <span class="circle circle-3"></span>
+      <span class="circle circle-4"></span>
+      <span class="circle circle-5"></span>
     </div>
+  </div>
 
-    <!-- Блок 2: фото -->
-    <div class="block-img">
-        <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
-    </div>
+  <!-- БЛОК 4: ФОНОВОЕ ФОТО + АНКЕТА (стиль из эталона) -->
+  <div class="block-bg block-bg-4">
+    <section class="rsvp">
+      <div class="container">
+        <h2>АНКЕТА ГОСТЯ</h2>
+        <p class="note">пожалуйста, подтвердите свое присутствие</p>
 
-    <!-- Блок 3: фон + кружки -->
-    <div class="block-bg block-bg-3">
-        <div class="circles">
-            <span class="circle circle-1"></span>
-            <span class="circle circle-2"></span>
-            <span class="circle circle-3"></span>
-            <span class="circle circle-4"></span>
-            <span class="circle circle-5"></span>
-        </div>
-    </div>
+        <form id="rsvpForm">
+          <label>Ваше имя и фамилия</label>
+          <input type="text" name="name" id="guestName" placeholder="Имя и фамилия" required>
 
-    <!-- Блок 4: фон + анкета (переработана) -->
-    <div class="block-bg block-bg-4">
-        <div class="survey">
-            <form id="guestForm">
+          <label>Сможете ли Вы присутствовать?</label>
+          <div class="radio-group">
+            <label class="custom-radio">
+              <input type="radio" name="attend" value="Да, смогу" required>
+              <span class="radio-mark"></span> Да, смогу
+            </label>
+            <label class="custom-radio">
+              <input type="radio" name="attend" value="Нет, не смогу">
+              <span class="radio-mark"></span> Нет, не смогу
+            </label>
+          </div>
 
-                <!-- Имя -->
-                <div class="form-group">
-                    <label>Ваше имя и фамилия</label>
-                    <input type="text" placeholder="Например, Анна Иванова" />
-                </div>
+          <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
+          <div class="checkbox-group">
+            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Вино"><span class="checkmark"></span> Вино</label>
+            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Виски / Ром"><span class="checkmark"></span> Виски / Ром</label>
+            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Пиво"><span class="checkmark"></span> Пиво</label>
+            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Шампанское"><span class="checkmark"></span> Шампанское</label>
+            <label class="custom-checkbox"><input type="checkbox" name="alcohol[]" value="Не пью"><span class="checkmark"></span> Не пью алкоголь</label>
+          </div>
 
-                <!-- Присутствие -->
-                <div class="form-group">
-                    <label>Будете ли присутствовать?</label>
-                    <div class="radio-group">
-                        <label><input type="radio" name="attendance" value="yes" /> Да</label>
-                        <label><input type="radio" name="attendance" value="no" /> Нет</label>
-                        <label><input type="radio" name="attendance" value="maybe" /> Не знаю</label>
-                    </div>
-                    <div class="sub-fields" id="guestCountFields">
-                        <div class="field">
-                            <label>Количество гостей с вами (взрослых)</label>
-                            <input type="number" name="adults" min="0" value="0" />
-                        </div>
-                        <div class="field">
-                            <label>Количество детей</label>
-                            <input type="number" name="children" min="0" value="0" />
-                        </div>
-                    </div>
-                </div>
+          <button type="submit" id="submitBtn">Отправить</button>
+          <div id="formMessage" class="form-message"></div>
+        </form>
+      </div>
+    </section>
+  </div>
 
-                <!-- Алкоголь -->
-                <div class="form-group">
-                    <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="alcohol" value="wine" /> Вино</label>
-                        <label><input type="checkbox" name="alcohol" value="whisky" /> Виски / Ром</label>
-                        <label><input type="checkbox" name="alcohol" value="beer" /> Пиво</label>
-                        <label><input type="checkbox" name="alcohol" value="champagne" /> Шампанское</label>
-                        <label><input type="checkbox" name="alcohol" value="none" /> Не пью алкоголь</label>
-                    </div>
-                </div>
+  <script>
+    // ===== ОТПРАВКА ФОРМЫ (с alert вместо отправки на сервер) =====
+    const rsvpForm = document.getElementById('rsvpForm');
+    const formMessage = document.getElementById('formMessage');
 
-                <button type="button" class="btn-submit" onclick="submitForm()">Отправить</button>
-            </form>
-        </div>
-    </div>
+    rsvpForm.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    <script>
-        const radioButtons = document.querySelectorAll('input[name="attendance"]');
-        const guestFields = document.getElementById('guestCountFields');
+      const nameInput = document.getElementById('guestName');
+      const name = nameInput ? nameInput.value.trim() : '';
 
-        radioButtons.forEach(radio => {
-            radio.addEventListener('change', function() {
-                if (this.value === 'yes' && this.checked) {
-                    guestFields.classList.add('visible');
-                } else {
-                    guestFields.classList.remove('visible');
-                }
-            });
-        });
+      if (name === '') {
+        formMessage.className = 'form-message show error';
+        formMessage.textContent = 'Пожалуйста, укажите ваше имя и фамилию.';
+        nameInput.focus();
+        return;
+      }
 
-        function submitForm() {
-            const name = document.querySelector('input[placeholder]').value.trim() || 'не указано';
-            const attendance = document.querySelector('input[name="attendance"]:checked');
-            const adults = document.querySelector('input[name="adults"]').value;
-            const children = document.querySelector('input[name="children"]').value;
-            const alcoholChecks = document.querySelectorAll('input[name="alcohol"]:checked');
-            const alcoholValues = Array.from(alcoholChecks).map(cb => cb.value);
+      const attendanceRadios = document.querySelectorAll('input[name="attend"]');
+      let attendance = '';
+      for (let radio of attendanceRadios) {
+        if (radio.checked) { attendance = radio.value; break; }
+      }
+      if (!attendance) {
+        formMessage.className = 'form-message show error';
+        formMessage.textContent = 'Пожалуйста, выберите вариант присутствия.';
+        return;
+      }
 
-            if (!attendance) {
-                alert('Пожалуйста, выберите вариант присутствия.');
-                return;
-            }
+      const alcoholCheckboxes = document.querySelectorAll('input[name="alcohol[]"]:checked');
+      const alcoholValues = Array.from(alcoholCheckboxes).map(cb => cb.value);
+      const alcoholString = alcoholValues.length ? alcoholValues.join(', ') : 'Не выбрано';
 
-            let message = 'Ваш ответ:\n';
-            message += 'Имя: ' + name + '\n';
-            message += 'Присутствие: ' + attendance.value + '\n';
-            if (attendance.value === 'yes') {
-                message += 'Взрослых: ' + adults + '\n';
-                message += 'Детей: ' + children + '\n';
-            }
-            message += 'Алкоголь: ' + (alcoholValues.length ? alcoholValues.join(', ') : 'Не выбрано');
+      // Вместо отправки на сервер — показываем alert
+      let message = 'Ваш ответ:\n';
+      message += 'Имя: ' + name + '\n';
+      message += 'Присутствие: ' + attendance + '\n';
+      message += 'Алкоголь: ' + alcoholString;
 
-            alert(message);
-        }
-    </script>
+      alert(message);
+
+      // Показываем сообщение об успехе
+      formMessage.className = 'form-message show';
+      formMessage.textContent = 'Спасибо! Ваш ответ получен.';
+      rsvpForm.reset();
+
+      setTimeout(() => {
+        formMessage.classList.remove('show');
+      }, 5000);
+    });
+  </script>
 
 </body>
 </html>
