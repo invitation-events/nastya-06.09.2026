@@ -45,7 +45,7 @@
 
     /* ===== ЧЕТВЁРТЫЙ БЛОК – картинка + анкета поверх ===== */
     .block-4-wrapper {
-      position: relative;            /* контейнер для позиционирования анкеты */
+      position: relative;
       width: 100%;
       display: block;
     }
@@ -66,19 +66,19 @@
       height: 100%;
       display: flex;
       justify-content: flex-start;
-      align-items: flex-start;       /* прижимаем к верху */
+      align-items: flex-start;
       padding: 30px 20px;
-      pointer-events: none;          /* чтобы клики проходили к форме, но мы разрешим события для формы */
+      pointer-events: none;
     }
     .rsvp-overlay > * {
-      pointer-events: auto;          /* форма должна быть интерактивной */
+      pointer-events: auto;
     }
 
     .rsvp {
       width: 100%;
       max-width: 580px;
       margin: 0;
-      margin-top: 150px;            /* значительно опустили */
+      margin-top: 55vh;              /* опущено прямо в середину-конец блока */
       background: transparent;
       color: #878778;
       text-align: left;
@@ -260,7 +260,7 @@
       .rsvp {
         padding-left: 20px;
         padding-right: 10px;
-        margin-top: 120px;            /* адаптивный отступ */
+        margin-top: 50vh;             /* чуть меньше на планшетах */
       }
       .rsvp label { font-size: 15px; }
       .rsvp input[type="text"] { font-size: 15px; }
@@ -271,7 +271,7 @@
     @media (max-width: 480px) {
       .rsvp {
         padding-left: 15px;
-        margin-top: 100px;            /* ещё меньше на маленьких экранах */
+        margin-top: 45vh;             /* на мобилках чуть выше, чтобы не упиралось в низ */
       }
     }
   </style>
@@ -288,12 +288,12 @@
     <img src="image_2026-08-11_11-41-430.png" alt="Фото 2" />
   </div>
 
-  <!-- БЛОК 3: ФОТО (было фоновым, теперь обычная картинка) -->
+  <!-- БЛОК 3: ФОТО -->
   <div class="block-img">
     <img src="image_2026-08-11_12-04-560.png" alt="Фото 3" />
   </div>
 
-  <!-- БЛОК 4: ФОТО + АНКЕТА ПОВЕРХ (опущена ниже) -->
+  <!-- БЛОК 4: ФОТО + АНКЕТА ПОВЕРХ (опущена к середине-концу) -->
   <div class="block-4-wrapper">
     <div class="block-img">
       <img src="image_2026-08-11_12-37-089.png" alt="Фото 4" />
