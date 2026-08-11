@@ -73,103 +73,99 @@
             transform: scale(1.05);
         }
 
-        /* ---- Четвёртый блок: фон + анкета (высота по содержимому) ---- */
+        /* ===== ЧЕТВЁРТЫЙ БЛОК – ПЕРЕРАБОТАН ===== */
         .block-bg-4 {
             background-image: url('image_2026-08-11_12-37-089.png');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
             width: 100%;
-            padding: 40px 20px;              /* отступы внутри блока */
-            height: auto;                    /* по содержимому, не на весь экран */
+            padding: 40px 20px;
+            height: auto;               /* высота по содержимому */
             display: flex;
-            justify-content: center;         /* центрируем анкету по горизонтали */
+            justify-content: center;
         }
 
-        .survey-overlay {
+        .survey {
+            max-width: 650px;
             width: 100%;
-            max-width: 700px;
-            padding: 0;                     /* внутренние отступы уже есть у полей */
+            /* никакого фона, только отступы */
+            padding: 0;
         }
 
-        .survey-overlay .form-group {
-            margin-bottom: 16px;
+        /* Каждая группа – вопрос */
+        .form-group {
+            margin-bottom: 20px;
         }
-        .survey-overlay .form-group:last-of-type {
-            margin-bottom: 10px;
+        .form-group:last-of-type {
+            margin-bottom: 0;
         }
 
-        .survey-overlay .form-group > label {
+        .form-group > label {
             display: block;
             font-weight: 600;
+            font-size: 1.1rem;
             color: #9bbf8b;
-            font-size: 1rem;
             margin-bottom: 6px;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* тень для читаемости, без размытия */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* Поля ввода – сплошной белый фон */
-        .survey-overlay input[type="text"],
-        .survey-overlay input[type="number"] {
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
             width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
             border-radius: 10px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             background: #ffffff;
             color: #333;
             transition: border 0.2s;
         }
-        .survey-overlay input[type="text"]:focus,
-        .survey-overlay input[type="number"]:focus {
+        .form-group input[type="text"]:focus,
+        .form-group input[type="number"]:focus {
             outline: none;
             border-color: #f3a4b4;
         }
 
-        .radio-group,
-        .checkbox-group {
+        /* Группа радиокнопок и чекбоксов – элементы в столбик */
+        .radio-group, .checkbox-group {
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px 18px;
-            align-items: center;
+            flex-direction: column;   /* все в столбик */
+            gap: 8px;
+            margin-top: 4px;
         }
 
         .radio-group label,
         .checkbox-group label {
-            font-weight: normal;
-            font-size: 0.95rem;
-            margin-bottom: 0;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 6px;
-            cursor: pointer;
+            gap: 8px;
+            font-size: 1rem;
             color: #fff;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* тень для читаемости */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            line-height: 1.4;
         }
 
-        /* Кастомные радио и чекбоксы – белые с розовым выделением */
+        /* Кастомные радио и чекбоксы */
         .radio-group input[type="radio"],
         .checkbox-group input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             border: 2px solid #fff;
             border-radius: 50%;
-            outline: none;
-            cursor: pointer;
-            transition: all 0.15s;
             flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.2); /* полупрозрачный фон, но без blur */
+            background: rgba(255, 255, 255, 0.15);
+            transition: all 0.15s;
+            cursor: pointer;
             position: relative;
         }
         .radio-group input[type="radio"]:checked {
             border-color: #f3a4b4;
             background: #f3a4b4;
             box-shadow: inset 0 0 0 4px #fff;
-        }
-        .radio-group input[type="radio"]:hover {
-            border-color: #f3a4b4;
         }
         .checkbox-group input[type="checkbox"] {
             border-radius: 4px;
@@ -179,68 +175,61 @@
             background: #f3a4b4;
             box-shadow: inset 0 0 0 4px #fff;
         }
-        .checkbox-group input[type="checkbox"]:hover {
-            border-color: #f3a4b4;
-        }
 
-        /* Поля для количества гостей (появляются при выборе "Да") */
+        /* Блок дополнительных полей (количество гостей) */
         .sub-fields {
-            margin-top: 10px;
-            padding-left: 14px;
-            border-left: 3px solid rgba(255, 255, 255, 0.6);
+            margin-top: 12px;
+            padding-left: 16px;
+            border-left: 3px solid #f3a4b4;
             display: none;
-            flex-wrap: wrap;
+            flex-direction: column;   /* столбик */
             gap: 12px;
             animation: fadeIn 0.25s ease;
         }
         .sub-fields.visible {
             display: flex;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         .sub-fields .field {
             display: flex;
             flex-direction: column;
-            gap: 3px;
-            flex: 1 1 120px;
+            gap: 2px;
         }
         .sub-fields .field label {
+            font-size: 0.95rem;
             font-weight: 500;
-            font-size: 0.9rem;
             color: #9bbf8b;
-            margin-bottom: 0;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
         .sub-fields .field input {
             width: 100%;
-            padding: 6px 10px;
+            max-width: 180px;          /* не растягиваем на всю ширину */
+            padding: 6px 12px;
+            border: 1px solid #ccc;
             border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             background: #ffffff;
         }
-        .sub-fields .field input:focus {
-            outline: none;
-            border-color: #f3a4b4;
-        }
 
-        /* Кнопка уменьшена */
         .btn-submit {
             background: #f3a4b4;
             border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
             font-weight: 600;
             color: #fff;
             cursor: pointer;
             transition: background 0.2s, transform 0.1s;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 4px;
-            text-shadow: none;
+            max-width: 200px;           /* чтобы кнопка не на весь экран */
+            margin-top: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
         .btn-submit:hover {
             background: #e88a9d;
@@ -249,6 +238,7 @@
             transform: scale(0.97);
         }
 
+        /* АДАПТИВНОСТЬ */
         @media (max-width: 600px) {
             .block-bg-3 {
                 padding-bottom: 70px;
@@ -260,40 +250,27 @@
             .circles {
                 gap: 16px;
             }
+
             .block-bg-4 {
-                padding: 20px 12px;
+                padding: 30px 16px;
             }
-            .survey-overlay .form-group {
-                margin-bottom: 12px;
+            .form-group {
+                margin-bottom: 16px;
             }
-            .radio-group,
-            .checkbox-group {
-                gap: 6px 12px;
+            .form-group > label {
+                font-size: 1rem;
             }
             .radio-group label,
             .checkbox-group label {
-                font-size: 0.85rem;
-            }
-            .survey-overlay .form-group > label {
                 font-size: 0.9rem;
             }
-            .survey-overlay input[type="text"],
-            .survey-overlay input[type="number"] {
-                font-size: 0.85rem;
-                padding: 6px 10px;
+            .sub-fields .field input {
+                max-width: 100%;        /* на телефоне поля растягиваются */
             }
             .btn-submit {
-                padding: 6px 14px;
-                font-size: 0.8rem;
-                border-radius: 16px;
-            }
-            .sub-fields {
-                gap: 8px;
-                padding-left: 10px;
-            }
-            .sub-fields .field input {
-                font-size: 0.85rem;
-                padding: 5px 8px;
+                max-width: 100%;
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -321,16 +298,18 @@
         </div>
     </div>
 
-    <!-- Блок 4: фон + анкета (высота по содержимому, без размытия) -->
+    <!-- Блок 4: фон + анкета (переработана) -->
     <div class="block-bg block-bg-4">
-        <div class="survey-overlay">
+        <div class="survey">
             <form id="guestForm">
 
+                <!-- Имя -->
                 <div class="form-group">
                     <label>Ваше имя и фамилия</label>
                     <input type="text" placeholder="Например, Анна Иванова" />
                 </div>
 
+                <!-- Присутствие -->
                 <div class="form-group">
                     <label>Будете ли присутствовать?</label>
                     <div class="radio-group">
@@ -350,6 +329,7 @@
                     </div>
                 </div>
 
+                <!-- Алкоголь -->
                 <div class="form-group">
                     <label>Предпочтения по алкоголю (можно выбрать несколько)</label>
                     <div class="checkbox-group">
